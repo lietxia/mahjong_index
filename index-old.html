@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>雀士远征踢馆指南 日麻地图 立直麻将地图</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md sticky-top shadow bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">雀士远征踢馆指南</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link text-light" href="#">添加</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">登入</a>
+          </li> -->
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="店名" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-2">
+    <div class="row">
+      <div class="col-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="#">赛事活动</a></li>
+          <li class="list-group-item"><a href="#">线下据点</a></li>
+          <li class="list-group-item"><a href="#">添加信息</a></li>
+          <li class="list-group-item"><a href="#">登入</a></li>
+          <li class="list-group-item"><a href="#">API说明</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <div>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            此网站仅为信息展示。除了加入 <kbd class="d-inline-block">雀庄公式战</kbd> 的雀庄外(会标记👑)，都 <kbd class="d-inline-block">不保证真实性</kbd> <kbd class="d-inline-block">不保证即时性</kbd>。请自行甄别！
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <h5>华北</h4>
+          <a href="#">北京</a>
+          <a href="#">天津</a>
+          <a href="#">河北</a>
+          <a href="#">山西</a>
+          <a href="#">内蒙古</a>
+          <h5>东北</h4>
+          辽宁
+          吉林
+          黑龙江
+          <h5>华东</h4>
+          上海
+          江苏
+          浙江
+          安徽
+          福建
+          江西
+          山东
+          <h5>中南</h4>
+          河南
+          湖北
+          湖南
+          广东
+          广西
+          海南
+          <h5>西南</h4>
+          重庆
+          四川
+          贵州
+          云南
+          西藏
+          <h5>西北</h4>
+          陕西
+          甘肃
+          青海
+          宁夏
+          新疆
+          <h5>港澳台等</h4>
+          香港
+          澳门
+          台湾
+          美国
+          日本
+          其他
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    (() => {
+      'use strict'
+      const getPreferredTheme = () => {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      }
+      const setTheme = function (theme) {
+        if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-bs-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+      }
+
+      setTheme(getPreferredTheme())
+    })()
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

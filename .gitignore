@@ -1,0 +1,10 @@
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.log
+.user.ini
+._*
+.DS_Store
+*/.DS_Store
+@*
+@eaDir/
