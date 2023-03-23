@@ -25,6 +25,11 @@
     kbd {
       font-family: Consolas, "Microsoft JhengHei"
     }
+    @media (max-width: 767.98px) {
+      .photos {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 
@@ -64,25 +69,18 @@
     </figure>
     <p id="markdown_text">机器配置：<br />大洋化学 REXX-III-eager框（八口）*1<br />大洋化学 JP-EX（四口）*2）</p>
     <div class="table-responsive">
-    <table id="table_info" class="table table-sm">
-      <thead>
-        <tr>
-          <th>类型</th>
-          <th>信息</th>
-        </tr>
-      </thead>
-      <tbody id="tbody_info">
-        <tr>
-          <td>QQ群</td>
-          <td>812711495</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-    <div id="photos" class="text-center">
-      <a href="#" target="_blank"><img src="https://000.mk/mfzh/img/banner002.jpg" width="30%"
-          class="img-thumbnail shadow-sm" alt="photo1" /></a>
+      <table id="table_info" class="table table-sm">
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>信息</th>
+          </tr>
+        </thead>
+        <tbody id="tbody_info">
+        </tbody>
+      </table>
     </div>
+    <div id="photos" class="text-center"></div>
   </div>
 
   <div id="page_list" class="container-fluid mt-3">
@@ -208,11 +206,11 @@
         target.innerText = '';
         for (let i = 0; i < shop_data[5].length; i++) {
           var a = document.createElement('a');
-          a.href=shop_data[5][i];
+          a.href = shop_data[5][i];
           var img = document.createElement('img');
           img.setAttribute("width", "30%")
           img.setAttribute("alt", "photo" + i);
-          img.className = "img-thumbnail shadow-sm";
+          img.className = "photos img-thumbnail shadow-sm";
           img.src = shop_data[5][i];
           a.appendChild(img);
           target.appendChild(a);
@@ -238,6 +236,7 @@
       $.getJSON("data_all.json", function (data) {
         window.web_cache.shop = data;
       });
+
       // window.web_cache.shop = [["浪速总店", "南京浪速·总店", "秦淮区龙台国际大厦裙楼三楼", "机器配置：\n大洋化学 REXX-II（八口）*1\n 大洋化学 REXX-III（八口）*3\n大洋化学 VIERAL（四口）*2\n大洋化学 JP-EX（四口）*1", ["QQ群", 812711495, "官网", "https://langsu.club", "B站", "https://space.bilibili.com/517435488"], ["https://000.mk/mfzh/img/banner002.jpg"]], ["浪速江北", "南京浪速·弘阳广场店", "江北新区弘阳时代中心二期4栋1127", "机器配置：\n大洋化学 REXX-II（八口）*1\n大洋化学 REXX-III（八口）*2\n大洋化学 JP-EX（四口）*1", ["QQ群", 619365570, "官网", "https://langsu.club", "B站", "https://space.bilibili.com/517435488"], ["https://000.mk/mfzh/img/banner002.jpg"]], ["浪速仙林", "南京浪速·仙林大学城店", "玄武区中南魔力月光广场625（仙鹤门地铁站）", "机器配置：\n大洋化学 REXX-III-eager框（八口）*1\n大洋化学 JP-EX（四口）*2）", ["QQ群", 743030801, "官网", "https://langsu.club", "B站", "https://space.bilibili.com/517435488"], ["https://000.mk/mfzh/img/banner002.jpg"]]];
 
       window.onhashchange = router;
