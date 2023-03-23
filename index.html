@@ -208,6 +208,7 @@
         target.innerText = '';
         for (let i = 0; i < shop_data[5].length; i++) {
           var a = document.createElement('a');
+          a.href=shop_data[5][i];
           var img = document.createElement('img');
           img.setAttribute("width", "30%")
           img.setAttribute("alt", "photo" + i);
@@ -227,7 +228,7 @@
         window.web_cache.list = data;
         $('#table_list').bootstrapTable('load', data_fmt(data))
       });
-      
+
       // $('#table_list').bootstrapTable('load', data_fmt([
       //   [9, 0, 1, "南京浪速·总店", "浪速总店"],
       //   [9, 0, 1, "南京浪速·弘阳广场店", "浪速江北"],
