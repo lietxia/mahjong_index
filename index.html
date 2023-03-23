@@ -25,6 +25,7 @@
     kbd {
       font-family: Consolas, "Microsoft JhengHei"
     }
+
     @media (max-width: 767.98px) {
       .photos {
         width: 90%;
@@ -217,7 +218,15 @@
         }
       }
     }
-
+    marked.setOptions({
+      pedantic: false,
+      gfm: true,
+      tables: true,
+      breaks: true,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false
+    });
     (function () {
 
       $('#table_list').bootstrapTable();
