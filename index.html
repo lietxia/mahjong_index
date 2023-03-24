@@ -55,7 +55,7 @@
     </div>
   </nav>
 
-  <div id="page_shop" class="container-fluid mt-3" style="display: none;">
+  <div id="page_shop" class="container mt-3" style="display: none;">
 
     <a class="btn btn-success btn-sm" href="#" role="button">返回</a>
     <a class="btn btn-danger btn-sm" target="_blank" href="https://docs.qq.com/form/page/DZHpWdGxoem5oVEpm"
@@ -84,7 +84,7 @@
     <div id="photos" class="text-center"></div>
   </div>
 
-  <div id="page_list" class="container-fluid mt-3">
+  <div id="page_list" class="container mt-3">
     <div id="my_alert" class="alert alert-warning alert-dismissible fade show" role="alert">
       此网站仅为信息展示。<kbd class="d-inline-block">不保证真实性</kbd>、<kbd class="d-inline-block">不保证即时性</kbd>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -228,15 +228,12 @@
       smartypants: false
     });
     (function () {
-
       $('#table_list').bootstrapTable();
-
+      window.onhashchange = router;
       $.getJSON("data_all.json", function (data) {
         window.web_cache = data;
+        router();
       });
-
-      window.onhashchange = router;
-      router();
     })()
   </script>
 </body>
