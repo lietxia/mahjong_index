@@ -55,7 +55,7 @@
     </div>
   </nav>
 
-  <div id="page_shop" class="container-fluid mt-3">
+  <div id="page_shop" class="container-fluid mt-3" style="display: none;">
 
     <a class="btn btn-success btn-sm" href="#" role="button">返回</a>
     <a class="btn btn-danger btn-sm" target="_blank" href="https://docs.qq.com/form/page/DZHpWdGxoem5oVEpm"
@@ -174,9 +174,9 @@
       }
       document.getElementById("markdown_text").innerHTML = marked.parse(shop_data[3]);
       var target = document.getElementById('tbody_info');
+      target.innerText = '';
       if (shop_data[4].length >= 2 && shop_data[4].length % 2 === 0) {
         //shop info table
-        target.innerText = '';
         for (var i = 0; i < shop_data[4].length; i += 2) {
           var tr = document.createElement("tr");
           var td1 = document.createElement('td');
@@ -202,9 +202,9 @@
       /*<a href="#" target="_blank"><img src="https://000.mk/mfzh/img/banner002.jpg" width="30%"
           class="img-thumbnail shadow-sm" alt="photo1" /></a>
           */
+      target = document.getElementById('photos');
+      target.innerText = '';
       if (shop_data[5].length >= 1) {
-        target = document.getElementById('photos');
-        target.innerText = '';
         for (let i = 0; i < shop_data[5].length; i++) {
           var a = document.createElement('a');
           a.href = shop_data[5][i];
@@ -249,7 +249,6 @@
       // window.web_cache.shop = [["浪速总店", "南京浪速·总店", "秦淮区龙台国际大厦裙楼三楼", "机器配置：\n大洋化学 REXX-II（八口）*1\n 大洋化学 REXX-III（八口）*3\n大洋化学 VIERAL（四口）*2\n大洋化学 JP-EX（四口）*1", ["QQ群", 812711495, "官网", "https://langsu.club", "B站", "https://space.bilibili.com/517435488"], ["https://000.mk/mfzh/img/banner002.jpg"]], ["浪速江北", "南京浪速·弘阳广场店", "江北新区弘阳时代中心二期4栋1127", "机器配置：\n大洋化学 REXX-II（八口）*1\n大洋化学 REXX-III（八口）*2\n大洋化学 JP-EX（四口）*1", ["QQ群", 619365570, "官网", "https://langsu.club", "B站", "https://space.bilibili.com/517435488"], ["https://000.mk/mfzh/img/banner002.jpg"]], ["浪速仙林", "南京浪速·仙林大学城店", "玄武区中南魔力月光广场625（仙鹤门地铁站）", "机器配置：\n大洋化学 REXX-III-eager框（八口）*1\n大洋化学 JP-EX（四口）*2）", ["QQ群", 743030801, "官网", "https://langsu.club", "B站", "https://space.bilibili.com/517435488"], ["https://000.mk/mfzh/img/banner002.jpg"]]];
 
       window.onhashchange = router;
-      $('#page_shop').hide();
       router();
     })()
   </script>
