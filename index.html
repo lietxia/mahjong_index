@@ -146,7 +146,7 @@
 
         json[i][0] = area2text[area];
         json[i][1] = subarea2text[area][subarea];
-        json[i][2] = `<span class="badge rounded-pill bg-${type2color[json[i][2]]}">{type2text[json[i][2]]}</span>`;
+        json[i][2] = `<span class="badge rounded-pill bg-${type2color[json[i][2]]}">${type2text[json[i][2]]}</span>`;
         json[i][3] = `<a href="#/shop/${i}/">${json[i][3]}</a>`;
       }
       return json;
