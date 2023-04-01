@@ -516,7 +516,10 @@
             "微信号",
             "gdstlz16"
         ],
-        []
+        [
+            "https://s.mahjong.pub/img/quezhuang/kuankuan1.jpg",
+            "https://s.mahjong.pub/img/quezhuang/kuankuan2.jpg"
+        ]
     ],
     [
         "洛神",
@@ -1859,7 +1862,14 @@
             "手机",
             15874089322
         ],
-        []
+        [
+            "https://s.mahjong.pub/img/quezhuang/mj1.png",
+            "https://s.mahjong.pub/img/quezhuang/mj2.png",
+            "https://s.mahjong.pub/img/quezhuang/mj3.png",
+            "https://s.mahjong.pub/img/quezhuang/mj4.png",
+            "https://s.mahjong.pub/img/quezhuang/mj5.png",
+            "https://s.mahjong.pub/img/quezhuang/mj6.png"
+        ]
     ],
     [
         "西瓜雀庄",
