@@ -177,26 +177,66 @@
 		}
 		function get_os() {
 			var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
 			if (/android/i.test(userAgent)) {
-				return "Android";
+				return 1;
 			}
-
-			// iOS detection from: http://stackoverflow.com/a/9039885/177710
 			if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-				return "iOS";
+				return 2;
 			}
-
-			return "unknown";
+			return 0;
 		}
 
-		function app_btn_html(name, lat, lng) {
-			return ``;
+		function app_btn_html(id) {
+			const array = ["百度", "高德", "腾讯"];
+			let html = '';
+			for (let index = 0; index < array.length; index++) {
+				html += `<button type="button" class="btn btn-primary btn-sm m-1" onclick="app_btn_click(${index},${id})">${array[index]}</button>`;
+			}
+			return html;
 		}
-		function app_btn_click(type, lat, lng, name) {
-			//http://api.map.baidu.com/marker?location=41.792397,123.370888&title=target&content=target&output=html&src=webapp.baidu.openAPIdemo&coord_type=gcj02
+		function app_btn_click(type, id) {
+			//const name = window.list[id][4];
+			const lng = window.list[id][5];//123.370888
+			const lat = window.list[id][6];//41.792397
+			let url = '';
+			const os = get_os();
+			if (os === 0) {//web
+				if (type === 0) {//baidu
+					url = `https://api.map.baidu.com/geocoder?location=${lat},${lng}&coord_type=gcj02&output=html&src=webapp.baidu.openAPIdemo`;
+				}
+				if (type === 1) {//gaode
+					url = `https://uri.amap.com/marker?position=${lng},${lat}&callnative=1`;
+				}
+				if (type === 2) {//tencent
+					url = `https://apis.map.qq.com/uri/v1/geocoder?coord=${lat},${lng}&referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77`;
+				}
+				return window.open(url, "_blank");
+			}
+			if (os === 1) {//android
+				if (type === 0) {//baidu
+					url = `bdapp://map/geocoder?location=${lat},${lng}&src=andr.baidu.openAPIdemo&coord_type=gcj02`;
+				}
+				if (type === 1) {//gaode
+					url = `androidamap://viewReGeo?sourceApplication=softname&lat=${lat}&lon=${lng}&dev=0`;
+				}
+				if (type === 2) {//tencent
+					url = `qqmap://map/geocoder?coord=${lat},${lng}&referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77`;
+				}
+			}
+			if (os === 2) {//ios
+				if (type === 0) {//baidu
+					url = `baidumap://map/geocoder?location=${lat},${lng}&src=andr.baidu.openAPIdemo&coord_type=gcj02`;
+				}
+				if (type === 1) {//gaode
+					url = `iosamap://navi?sourceApplication=applicationName&lat=${lat}&lon=${lng}&dev=0`;
+				}
+				if (type === 2) {//tencent
+					url = `qqmap://map/geocoder?coord=${lat},${lng}&referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77`;
+				}
+			}
+			return window.open(url);
+		}
 
-		}
 		function router() {
 			var hash = location.hash.split('/');
 			if (hash.length >= 2) {
@@ -280,7 +320,7 @@
 					<span class="badge rounded-pill bg-secondary">${info[2]}</span>
 					<span class="badge rounded-pill bg-secondary">${info[3]}</span>
 					<br />
-					<small class="text-info">${info[5]} ${info[6]}</small>
+					${app_btn_html(evt.cluster.geometries[0].id)}
 					</div>`);//设置信息窗内容
 			})
 			map.fitBounds(bounds, {
