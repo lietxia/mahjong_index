@@ -203,6 +203,9 @@
 			$('#page_list').hide();
 			$('#page_shop').hide();
 			$('#page_map').show();
+			if (document.getElementById('page_map').innerText == "") {
+				initMap();
+			}
 		}
 		function initMap() {
 			var list = window.list;
