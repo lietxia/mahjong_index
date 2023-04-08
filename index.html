@@ -75,6 +75,7 @@
 	<div id="page_shop" class="container mt-3" style="display: none;">
 
 		<a class="btn btn-success btn-sm" href="#" role="button">返回</a>
+		<span id="shop_app_btns"></span>
 		<a class="btn btn-danger btn-sm float-end" target="_blank"
 			href="https://docs.qq.com/form/page/DZHpWdGxoem5oVEpm" role="button">修改信息</a>
 		<figure>
@@ -331,6 +332,9 @@
 			$('#page_list').hide();
 			$('#page_map').hide();
 			$('#page_shop').show();
+			if (window.list.length > 0) {
+				document.getElementById('shop_app_btns').innerHTML = app_btn_html(shop_id);
+			}
 			shop_id = parseInt(shop_id);
 			var shop_data = window.web_cache[shop_id];
 			var ids = ['full_name', 'address'];
