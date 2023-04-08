@@ -255,7 +255,10 @@
 					<span class="badge rounded-pill bg-secondary">${info[2]}</span>
 					<span class="badge rounded-pill bg-secondary">${info[3]}</span>
 					<br />
-					<small class="text-info">${info[5]} ${info[6]}</small>
+					<small class="text-info">
+					${window.web_cache[evt.cluster.geometries[0].id][2]}
+					<br />
+					${info[5]} ${info[6]}</small>
 					</div>`);//设置信息窗内容
 			})
 			map.fitBounds(bounds, {
