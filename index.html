@@ -219,7 +219,11 @@
 				bounds.extend(p);
 			}
 			//初始化地图
-			var map = new TMap.Map("page_map", {});
+			var obj = {};
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				obj = { mapStyleId: "style 1" };
+			}
+			var map = new TMap.Map("page_map", obj);
 
 			//初始marker
 			var marker = new TMap.MarkerCluster({
