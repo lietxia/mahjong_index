@@ -204,7 +204,6 @@
 				var p = new TMap.LatLng(list[i][6], list[i][5]);
 				geo[i] = { // 点数组
 					id: i,
-					title: list[i][3],
 					position: p
 				};
 				bounds.extend(p);
@@ -238,9 +237,11 @@
 				infoWindow.open(); //打开信息窗
 				infoWindow.setPosition(evt.cluster.center);//设置信息窗位置
 				console.log(evt);
+				var info = window.list[evt.cluster.geometries[0].id]
 				infoWindow.setContent(`<div>
-					<a href="#/shop/${evt.cluster.geometries[0].id}/">${evt.cluster.geometries[0].title}<a/>
+					${info[1]}
 					<br />
+					${info[0]} ${info[2]} ${info[3]}
 					${evt.cluster.center.toString()}
 					</div>`);//设置信息窗内容
 			})
