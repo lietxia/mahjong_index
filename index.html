@@ -4,6 +4,7 @@
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>雀士远征踢馆指南 立直麻将 地图 日麻地图</title>
 	<meta name="keywords" content="麻将地图,立直麻将,雀士远征踢馆指南,立直麻将地图,日麻地图,日本麻将地图" />
@@ -50,6 +51,7 @@
 </head>
 
 <body>
+	<input type="button" onclick="" value="" />
 	<nav class="navbar navbar-expand-sm sticky-top shadow navbar-dark bg-primary">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">雀士远征踢馆指南</a>
@@ -174,6 +176,28 @@
 			}
 			return json;
 		}
+		function get_os() {
+			var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+			if (/android/i.test(userAgent)) {
+				return "Android";
+			}
+
+			// iOS detection from: http://stackoverflow.com/a/9039885/177710
+			if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+				return "iOS";
+			}
+
+			return "unknown";
+		}
+
+		function app_btn_html(name, lat, lng) {
+			return ``;
+		}
+		function app_btn_click(type, lat, lng, name) {
+			//http://api.map.baidu.com/marker?location=41.792397,123.370888&title=target&content=target&output=html&src=webapp.baidu.openAPIdemo&coord_type=gcj02
+
+		}
 		function router() {
 			var hash = location.hash.split('/');
 			if (hash.length >= 2) {
@@ -181,12 +205,6 @@
 					return display_shop(hash[2]);
 				}
 				if (hash[1] === "map") {
-					if (window.list.length === 0) {
-						return $.getJSON("list.json", function (data) {
-							window.list = data;
-							display_map();
-						});
-					}
 					return display_map();
 				}
 				display_list();
@@ -205,7 +223,8 @@
 			$('#page_list').hide();
 			$('#page_shop').hide();
 			$('#page_map').show();
-			if (document.getElementById('page_map').innerText == "") {
+			if (window.list.length > 0 &&
+				getElementById('page_map').innerText == "") {
 				initMap();
 			}
 		}
@@ -262,6 +281,7 @@
 					<span class="badge rounded-pill bg-secondary">${info[2]}</span>
 					<span class="badge rounded-pill bg-secondary">${info[3]}</span>
 					<br />
+					<a target="_blank" href="http://api.map.baidu.com/marker?location=40.047669,116.313082&title=target&content=target&output=html&src=webapp.baidu.openAPIdemo&coord_type=gcj02">百度地图</a>
 					<small class="text-info">${info[5]} ${info[6]}</small>
 					</div>`);//设置信息窗内容
 			})
@@ -334,7 +354,11 @@
 			smartypants: false
 		});
 		(function () {
-			$('#table_list').bootstrapTable();
+			$('#table_list').bootstrapTable({
+				onLoadSuccess: function () {
+					router();
+				}
+			});
 			window.onhashchange = router;
 			$.getJSON("data_all.json", function (data) {
 				window.web_cache = data;
