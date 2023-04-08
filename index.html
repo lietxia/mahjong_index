@@ -25,6 +25,13 @@
 			font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "Meiryo", "Malgun Gothic", "tahoma", "Dotum", "MS PGothic", "PMingLiu", system, system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 		}
 
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+		}
+
 		code,
 		pre,
 		kbd {
@@ -65,7 +72,7 @@
 			</div>
 		</div>
 	</nav>
-	<div id="page_map" style="display: none;"></div>
+	<div id="page_map" class="mt-3" style="display: none;"></div>
 	<div id="page_shop" class="container mt-3" style="display: none;">
 
 		<a class="btn btn-success btn-sm" href="#" role="button">返回</a>
@@ -193,8 +200,9 @@
 			$('#page_list').hide();
 			$('#page_shop').hide();
 			$('#page_map').show();
-			$('#page_map').empty();
-			initMap();
+			if (document.getElementById('page_map').innerText == "") {
+				initMap();
+			}
 		}
 		function initMap() {
 			var list = window.list;
@@ -241,7 +249,9 @@
 				infoWindow.setContent(`<div>
 					${info[1]}
 					<br />
-					${info[0]} ${info[2]} ${info[3]}
+					${info[0]}
+					<span class="badge rounded-pill bg-secondary">${info[2]}</span>
+					<span class="badge rounded-pill bg-secondary">${info[3]}</span>
 					${evt.cluster.center.toString()}
 					</div>`);//设置信息窗内容
 			})
