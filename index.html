@@ -242,7 +242,7 @@
 				//设置infoWindow
 				infoWindow.open(); //打开信息窗
 				infoWindow.setPosition(evt.cluster.center);//设置信息窗位置
-				console.log(evt);
+				//console.log(evt);
 				var info = window.list[evt.cluster.geometries[0].id]
 				infoWindow.setContent(`<div>
 					${info[1]}
@@ -251,7 +251,7 @@
 					<span class="badge rounded-pill bg-secondary">${info[2]}</span>
 					<span class="badge rounded-pill bg-secondary">${info[3]}</span>
 					<br />
-					<span class="text-info">${evt.cluster.center.toString()}</span>
+					<small class="text-info">${info[5]} ${info[6]}</small>
 					</div>`);//设置信息窗内容
 			})
 			map.fitBounds(bounds, {
