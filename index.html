@@ -162,10 +162,10 @@
 			for (var i = 0; i < json.length; i++) {
 				var area = json[i][0];
 				var subarea = json[i][1];
-				json[i][2] = area2text[area];
-				json[i][3] = subarea2text[area][subarea];
 				json[i][0] = `<span class="badge rounded-pill bg-${type2color[json[i][2]]}">${type2text[json[i][2]]}</span>`;
 				json[i][1] = `<a href="#/shop/${i}/">${json[i][3]}</a>`;
+				json[i][2] = area2text[area];
+				json[i][3] = subarea2text[area][subarea];
 			}
 			return json;
 		}
