@@ -182,7 +182,10 @@
 				}
 				if (hash[1] === "map") {
 					if (window.list.length === 0) {
-						display_list();
+						return $.getJSON("list.json", function (data) {
+							window.list = data;
+							display_map();
+						});
 					}
 					return display_map();
 				}
