@@ -172,18 +172,19 @@
 				json[i][2] = area2text[area];
 				json[i][3] = subarea2text[area][subarea];
 			}
+			if (document.getElementById('page_map').innerText == "") {
+				initMap();
+			}
 			return json;
 		}
 		function router() {
 			var hash = location.hash.split('/');
+			window.myhash = hash;
 			if (hash.length >= 2) {
 				if (hash[1] === "shop") {
 					return display_shop(hash[2]);
 				}
 				if (hash[1] === "map") {
-					if (window.list.length === 0) {
-						display_list();
-					}
 					return display_map();
 				}
 				display_list();
@@ -202,9 +203,6 @@
 			$('#page_list').hide();
 			$('#page_shop').hide();
 			$('#page_map').show();
-			if (document.getElementById('page_map').innerText == "") {
-				initMap();
-			}
 		}
 		function initMap() {
 			var list = window.list;
