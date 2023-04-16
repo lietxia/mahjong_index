@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>同桌PK</title>
+
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://cdn.staticfile.org/bootswatch/5.1.3/darkly/bootstrap.min.css"
+		media="(prefers-color-scheme: dark)" rel="stylesheet">
+	<link href="https://cdn.staticfile.org/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="https://cdn.staticfile.org/bootstrap-table/1.21.3/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-fluid mt-3 mb-3">
+		<div class="row align-items-start">
+			<div class="col">
+				<div class="form-floating">
+					<textarea class="form-control" placeholder="csv table" id="csv"></textarea>
+					<label for="csv">【记录】粘贴对战记录CSV表格</label>
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-floating">
+					<textarea class="form-control" placeholder="computer" id="com"></textarea>
+					<label for="com">【电脑顶替】每行4个名字，第1个是自摸切</label>
+				</div>
+
+			</div>
+		</div>
+		<div class="d-grid gap-2 col-6 mx-auto">
+			<input onClick="rank()" type="button" class="btn btn-primary m-2" value="统计" />
+		</div>
+
+		<table id="my_table" class="text-center table-sm table-striped" id="table" data-search="true"
+			data-show-columns="true" data-show-columns-toggle-all="true" data-toolbar=".toolbar" data-buttons="buttons">
+			<thead>
+				<tr>
+					<th data-field="0">#</th>
+					<th data-field="1">对战</th>
+					<th data-field="2">第1</th>
+					<th data-field="3" data-sortable="true">分</th>
+					<th data-field="4">第2</th>
+					<th data-field="5" data-sortable="true">分</th>
+					<th data-field="6">第3</th>
+					<th data-field="7" data-sortable="true">分</th>
+					<th data-field="8">第4</th>
+					<th data-field="9" data-sortable="true">分</th>
+				</tr>
+			</thead>
+			<tbody id="table_body"></tbody>
+		</table>
+	</div>
+	<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+	<script crossorigin="anonymous"
+		src="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.staticfile.org/bootstrap-table/1.21.3/bootstrap-table.min.js"></script>
+	<script>
+		function rank() {
+			let table_array = [];
+			let result = {};
+			let csv = document.getElementById('csv').value.trim().split("\n");
+			let com = document.getElementById('com').value.trim().split("\n");
+			let com_obj = {};
+			if (com[0] !== "") {
+				com.forEach(row => {
+					row = row.trim();
+					let row_arr = row.split(/\s+/);
+					if (row_arr.length !== 4) {
+						alert("【电脑顶替】每行要输入4个名字，第一个名字是被自摸切的选手");
+					}
+					var my_arr = [row_arr[1], row_arr[2], row_arr[3]];
+					my_arr.sort();
+					com_obj[my_arr.join()] = row_arr[0];
+				});
+			}
+			csv.forEach(row => {
+				row = row.trim();
+				let row_arr = row.split("\t");
+				if (!row_arr[0].startsWith("2023")) {
+					return;
+				}
+				let com = 0;
+				let not_com = [];
+				for (let i = 2; i <= 8; i += 2) {
+					if (row_arr[i] === "電腦") {
+						// row_arr[i] = "倚梦依诗";
+						// console.log(1)
+						com = i;
+					} else {
+						not_com.push(row_arr[i]);
+					}
+				}
+				if (com > 0) {
+					not_com.sort();
+					var com_key = not_com.join();
+					console.log(com_obj, com_key);
+					if (Object.hasOwnProperty.call(com_obj, com_key)) {
+						row_arr[com] = com_obj[com_key];
+					} else {
+						alert("有自摸切电脑，但不知道电脑顶替的是谁，请填写【电脑顶替】");
+					}
+				}
+				let key_arr = [row_arr[2], row_arr[4], row_arr[6], row_arr[8]];
+				key_arr.sort();
+				let key = key_arr.join();
+
+				if (result.hasOwnProperty(key)) {
+					result[key]["  "]++;
+					result[key][row_arr[2]] += row_arr[3] * 10;
+					result[key][row_arr[4]] += row_arr[5] * 10;
+					result[key][row_arr[6]] += row_arr[7] * 10;
+					result[key][row_arr[8]] += row_arr[9] * 10;
+				} else {
+					result[key] = {};
+					result[key]["  "] = 1;
+					result[key][row_arr[2]] = row_arr[3] * 10;
+					result[key][row_arr[4]] = row_arr[5] * 10;
+					result[key][row_arr[6]] = row_arr[7] * 10;
+					result[key][row_arr[8]] = row_arr[9] * 10;
+				}
+			})
+
+			let i = 1;
+			for (let key in result) {
+				if (Object.hasOwnProperty.call(result, key)) {
+					let e = result[key];
+					let my_arr = [];
+					let count = 0;
+					for (let k in e) {
+						if (Object.hasOwnProperty.call(e, k)) {
+							if (k === "  ") {
+								count = e[k];
+							} else {
+								my_arr.push([k, e[k] / 10]);
+							}
+						}
+					}
+					my_arr.sort(function (a, b) {
+						return b[1] - a[1];
+					});
+					table_array.push([i, count,
+						my_arr[0][0], my_arr[0][1],
+						my_arr[1][0], my_arr[1][1],
+						my_arr[2][0], my_arr[2][1],
+						my_arr[3][0], my_arr[3][1],
+					]);
+					i++;
+				}
+			}
+			console.log(table_array);
+			$('#my_table').bootstrapTable('load', table_array)
+			return table_array;
+		}
+		$('#my_table').bootstrapTable();
+	</script>
+</body>
+
+</html>

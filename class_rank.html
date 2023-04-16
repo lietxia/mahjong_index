@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="utf-8" />
+	<title>輔助分組</title>
+	<style>
+		body {
+			background-color: #222;
+			width: 90%;
+			margin: auto;
+		}
+
+		body,
+		input,
+		textarea {
+			font-family: "Microsoft JhengHei", Meiryo, "Malgun Gothic", tahoma,
+				Dotum, "MS PGothic", PMingLiu, sans-serif;
+			vertical-align: middle;
+			text-align: center;
+			color: #fff;
+		}
+
+		textarea,
+		input {
+			resize: none;
+			overflow: hidden;
+			margin: 4px;
+			border: 1px solid #777;
+			background-color: #26212b;
+			color: #fff;
+		}
+
+		h3 {
+			margin: 3px;
+		}
+
+		table {
+			border-collapse: collapse;
+			border: 0;
+			width: 100%;
+		}
+
+		td,
+		th {
+			border: 1px solid #777;
+		}
+
+		fieldset {
+			border: 1px dashed #666;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid #666;
+		}
+
+
+		legend {
+			color: #fff;
+		}
+	</style>
+
+	<script>
+		function rank() {
+			var table_text = document.getElementById('sort_result').value;
+			var result = {};
+			var arr = table_text.trim().split("\n");
+			arr.forEach(row => {
+				var row_arr = row.split("\t");
+				if (!row_arr[0].startsWith("2023")) {
+					return;
+				}
+				var com = 0;
+				for (var i = 2; i <= 8; i += 2) {
+					if (row_arr[i] === "電腦") {
+						row_arr[i] = "倚梦依诗";
+						console.log(1)
+					}
+				}
+				var key_arr = [row_arr[2], row_arr[4], row_arr[6], row_arr[8]];
+				key_arr.sort();
+				var key = key_arr.join();
+
+				if (result.hasOwnProperty(key)) {
+					result[key]["  "]++;
+					result[key][row_arr[2]] += row_arr[3] * 10;
+					result[key][row_arr[4]] += row_arr[5] * 10;
+					result[key][row_arr[6]] += row_arr[7] * 10;
+					result[key][row_arr[8]] += row_arr[9] * 10;
+				} else {
+					result[key] = {};
+					result[key]["  "] = 1;
+					result[key][row_arr[2]] = row_arr[3] * 10;
+					result[key][row_arr[4]] = row_arr[5] * 10;
+					result[key][row_arr[6]] = row_arr[7] * 10;
+					result[key][row_arr[8]] = row_arr[9] * 10;
+				}
+			})
+			var target = document.getElementById('table_context');
+			target.innerText = '';
+			var i = 1;
+			for (var key in result) {
+				if (Object.hasOwnProperty.call(result, key)) {
+					var e = result[key];
+					var tr = document.createElement('tr');
+					var td = document.createElement('td');
+					td.innerText = i;
+					tr.appendChild(td);
+					var my_arr = [];
+					var count = 0;
+					for (var k in e) {
+						if (Object.hasOwnProperty.call(e, k)) {
+							if (k === "  ") {
+								count = e[k];
+							} else {
+								my_arr.push([k, e[k] / 10]);
+							}
+						}
+					}
+					var td = document.createElement('td');
+					td.innerText = count;
+					tr.appendChild(td);
+					my_arr.sort(function (a, b) {
+						return b[1] - a[1];
+					});
+					my_arr.forEach((row) => {
+						var td1 = document.createElement('td');
+						var td2 = document.createElement('td');
+						td1.innerText = row[0];
+						td2.innerText = row[1];
+						tr.appendChild(td1);
+						tr.appendChild(td2);
+					});
+
+					target.appendChild(tr);
+					i++;
+				}
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td>
+				<h3>记录表格</h3>
+				粘贴雀魂的CSV表格<br />
+				<textarea cols="30" id="sort_result" rows="4"></textarea><br />
+				<input onClick="rank()" type="button" value="统计" />
+			</td>
+
+			<td>
+				<h3>三缺一</h3>
+				每行4名字，空格隔开，第一个名字是自摸切<br />
+				<textarea cols="30" id="result" rows="5"></textarea>
+			</td>
+		</tr>
+	</table>
+
+	<hr />
+	<table>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>对战数</th>
+				<th>选手1</th>
+				<th>分1</th>
+				<th>选手2</th>
+				<th>分2</th>
+				<th>选手3</th>
+				<th>分3</th>
+				<th>选手4</th>
+				<th>分4</th>
+			</tr>
+		</thead>
+		<tbody id="table_context"></tbody>
+	</table>
+
+</body>
+
+</html>
