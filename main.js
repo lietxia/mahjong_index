@@ -11,6 +11,7 @@ function data_fmt(json) {
 		json[i][1] = `<a href="#/shop/${i}/">${json[i][1]}</a>`;
 		json[i][2] = area2text[area];
 		json[i][3] = subarea2text[area][subarea];
+		json[i][11]=json[i][1];
 	}
 	return json;
 }
@@ -175,22 +176,22 @@ function display_shop(shop_id) {
 	shop_id = parseInt(shop_id);
 	var shop_data = window.web_cache[shop_id];
 	var ids = ['full_name', 'address'];
-	var values = [1, 2];
+	var values = [11, 7];
 	for (var i = 0; i < ids.length; i++) {
 		document.getElementById(ids[i]).innerText = shop_data[values[i]];
 	}
-	document.getElementById("markdown_text").innerHTML = marked.parse(shop_data[3]);
+	document.getElementById("markdown_text").innerHTML = marked.parse(shop_data[8]);
 	var target = document.getElementById('tbody_info');
 	target.innerText = '';
-	if (shop_data[4].length >= 2 && shop_data[4].length % 2 === 0) {
+	if (shop_data[9].length >= 2 && shop_data[9].length % 2 === 0) {
 		//shop info table
-		for (var i = 0; i < shop_data[4].length; i += 2) {
+		for (var i = 0; i < shop_data[9].length; i += 2) {
 			var tr = document.createElement("tr");
 			var td1 = document.createElement('td');
 			var td2 = document.createElement('td');
-			td1.appendChild(document.createTextNode(shop_data[4][i]));
+			td1.appendChild(document.createTextNode(shop_data[9][i]));
 			td2.className = "text-wrap";
-			var text = shop_data[4][i + 1] + '';
+			var text = shop_data[9][i + 1] + '';
 			if (text.startsWith("http")) {
 				var a = document.createElement('a');
 				a.href = text;
@@ -208,16 +209,16 @@ function display_shop(shop_id) {
 	//photos
 	target = document.getElementById('photos');
 	target.innerText = '';
-	if (shop_data[5].length >= 1) {
-		for (let i = 0; i < shop_data[5].length; i++) {
+	if (shop_data[10].length >= 1) {
+		for (let i = 0; i < shop_data[10].length; i++) {
 			var a = document.createElement('a');
-			a.href = shop_data[5][i];
+			a.href = shop_data[10][i];
 			//a.setAttribute('target', '_blank');
 			var img = document.createElement('img');
 			img.setAttribute("width", "30%")
 			img.setAttribute("alt", "photo" + i);
 			img.className = "photos img-thumbnail shadow-sm";
-			img.src = shop_data[5][i];
+			img.src = shop_data[10][i];
 			a.appendChild(img);
 			target.appendChild(a);
 		}
