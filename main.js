@@ -235,11 +235,12 @@ marked.setOptions({
 	smartypants: false
 });
 (function () {
-	$('#table_list').bootstrapTable();
 	window.onhashchange = router;
 	$.getJSON("list.json", function (data) {
 		window.web_cache = data_fmt(data);
-		$('#table_list').bootstrapTable('load', window.web_cache);
+		$('#table_list').bootstrapTable({
+			data: window.web_cache
+		});
 		router();
 	});
 })()
