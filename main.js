@@ -7,12 +7,13 @@ function data_fmt(json) {
 	for (var i = 0; i < json.length; i++) {
 		var area = json[i][2];
 		var subarea = json[i][3];
+		json[i][11] = json[i][1];
 		json[i][0] = `<span class="badge rounded-pill bg-${type2color[json[i][0]]}">${type2text[json[i][0]]}</span>`;
 		json[i][1] = `<a href="#/shop/${i}/">${json[i][1]}</a>`;
 		json[i][2] = area2text[area];
 		json[i][3] = subarea2text[area][subarea];
-		json[i][11]=json[i][1];
 	}
+	json.reverse();
 	return json;
 }
 function get_os() {
