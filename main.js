@@ -175,7 +175,7 @@ function display_shop(shop_id) {
 	shop_id = parseInt(shop_id);
 	var shop_data = window.web_cache[shop_id];
 	var ids = ['full_name', 'address'];
-	var values = [1, 2];
+	var values = [3, 7];
 	for (var i = 0; i < ids.length; i++) {
 		document.getElementById(ids[i]).innerText = shop_data[values[i]];
 	}
