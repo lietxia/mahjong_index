@@ -175,7 +175,7 @@ function display_shop(shop_id) {
 	shop_id = parseInt(shop_id);
 	var shop_data = window.web_cache[shop_id];
 	var ids = ['full_name', 'address'];
-	var values = [3, 7];
+	var values = [1, 2];
 	for (var i = 0; i < ids.length; i++) {
 		document.getElementById(ids[i]).innerText = shop_data[values[i]];
 	}
@@ -233,12 +233,11 @@ marked.setOptions({
 	smartypants: false
 });
 (function () {
-	var my_table=$('#table_list');
-	my_table.bootstrapTable();
+	$('#table_list').bootstrapTable();
 	window.onhashchange = router;
 	$.getJSON("list.json", function (data) {
 		window.web_cache = data;
-		my_table.bootstrapTable('load', data)
+		$('#table_list').bootstrapTable('load', data)
 		router();
 	});
 })()
