@@ -174,7 +174,7 @@ function display_shop(shop_id) {
 	if (window.web_cache.length > 0) {
 		document.getElementById('shop_app_btns').innerHTML = app_btn_html(shop_id);
 	}
-	shop_id = parseInt(shop_id);
+	shop_id = window.web_cache.length - parseInt(shop_id) - 1;
 	var shop_data = window.web_cache[shop_id];
 	var ids = ['full_name', 'address'];
 	var values = [11, 7];
