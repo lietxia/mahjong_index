@@ -1287,10 +1287,10 @@
 		"ALL LAST日麻桌游体验馆",
 		8,
 		12,
-		"浅草",
+		"ALLLAST",
 		121.212608,
 		31.039022,
-		"上海市松江区新松江路1060号恒杰商务大楼B座709室（开元地中海对面）",
+		"上海市松江区新松江路1060号恒杰商务大楼B座409室（开元地中海对面）",
 		"麻将机：大洋化学JPEX 雀友2021款",
 		[
 			"老板微信",
@@ -1301,7 +1301,8 @@
 			566367110
 		],
 		[
-			"https://s.000.mk/img/quezhuang/al2.png"
+			"https://s.000.mk/img/quezhuang/allstart0.png",
+			"https://s.000.mk/img/quezhuang/allstart1.png"
 		]
 	],
 	[
@@ -1309,7 +1310,7 @@
 		"浅草·日麻俱乐部",
 		8,
 		4,
-		"ALLLAST",
+		"浅草",
 		121.426979,
 		31.230742,
 		"上海市普陀区长寿路1118号悦达国际大厦B23C（地铁13，14号线武宁路地铁站1号口步行5分钟左右）",
@@ -2424,7 +2425,7 @@
 		"ALLSTAR",
 		121.51137,
 		31.30483,
-		"上海市/杨浦区/大学路52号409室",
+		"上海市/杨浦区/大学路52号302室",
 		"【上海AllStar日麻桌游俱乐部】\n上海市/杨浦区/大学路52号302室（地铁10号线江湾体育场站9出口）\n营业时间：全天\n当前设备情况：大洋化学JP-C 4台\n备注：室内严格禁烟",
 		[
 			"QQ群",
@@ -2433,8 +2434,9 @@
 			"sh_zhou0801"
 		],
 		[
-			"https://s.000.mk/img/quezhuang/allstart0.png",
-			"https://s.000.mk/img/quezhuang/allstart1.png"
+			"https://s.000.mk/img/quezhuang/all_star1.jpg",
+			"https://s.000.mk/img/quezhuang/all_star2.jpg",
+			"https://s.000.mk/img/quezhuang/all_star3.jpg"
 		]
 	],
 	[
