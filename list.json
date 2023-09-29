@@ -5838,7 +5838,8 @@
 			894138484
 		],
 		[]
-	],[
+	],
+	[
 		0,
 		"云岭五店（汉阳区）",
 		16,
@@ -5854,6 +5855,9 @@
 			"QQ群",
 			745535253
 		],
-		[]
+		[
+			"https://s.r-mj.com/img/quezhuang/yl51.png",
+			"https://s.r-mj.com/img/quezhuang/yl52.png"
+		]
 	]
 ]
