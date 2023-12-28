@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>大凤林 立直麻将 地图 日麻地图</title>
+	<meta name="keywords" content="麻将地图,立直麻将,大凤林,立直麻将地图,日麻地图,日本麻将地图" />
+	<meta name="description" content="立直麻将地图网站" />
+	<meta name="baidu-site-verification" content="codeva-Xkm2bZdsn3" />
+	<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.staticfile.org/bootswatch/5.1.3/darkly/bootstrap.min.css"
+		media="(prefers-color-scheme: dark)" rel="stylesheet">
+	<link href="https://cdn.staticfile.org/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="https://cdn.staticfile.org/bootstrap-table/1.21.3/bootstrap-table.min.css" rel="stylesheet">
+	<link
+		href="https://cdn.staticfile.org/bootstrap-table/1.21.3/extensions/filter-control/bootstrap-table-filter-control.min.css"
+		rel="stylesheet">
+	<style>
+		body,
+		input,
+		textarea,
+		option,
+		select {
+			font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "Meiryo", "Malgun Gothic", "tahoma", "Dotum", "MS PGothic", "PMingLiu", system, system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+		}
+
+		code,
+		pre,
+		kbd {
+			font-family: Consolas, "Microsoft JhengHei"
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		#page_map {
+			width: 100%;
+			height: 85%;
+		}
+
+		@media (max-width: 767.98px) {
+			.photos {
+				width: 90%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm sticky-top shadow navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">大凤林</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" target="_blank"
+							href="https://docs.qq.com/form/page/DZElqZnljT0J4VnNI">提供信息</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/lietxia/mahjong_index">GitHub</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="page_map" class="mt-3" style="display: none;"></div>
+	<div id="page_shop" class="container mt-3" style="display: none;">
+
+		<a class="btn btn-success btn-sm" href="#" role="button">返回</a>
+		<span id="shop_app_btns"></span>
+		<a class="btn btn-danger btn-sm float-end" target="_blank"
+			href="https://docs.qq.com/form/page/DZHpWdGxoem5oVEpm" role="button">修改信息</a>
+		<figure>
+			<blockquote class="blockquote">
+				<p id="full_name">南京浪速·仙林大学城店</p>
+			</blockquote>
+			<figcaption class="blockquote-footer" id="address">
+				秦淮区龙台国际大厦裙楼三楼
+			</figcaption>
+		</figure>
+		<p id="markdown_text">机器配置：<br />大洋化学 REXX-III-eager框（八口）*1<br />大洋化学 JP-EX（四口）*2）</p>
+		<div class="table-responsive">
+			<table id="table_info" class="table table-sm">
+				<thead>
+					<tr>
+						<th>类型</th>
+						<th>信息</th>
+					</tr>
+				</thead>
+				<tbody id="tbody_info">
+				</tbody>
+			</table>
+		</div>
+		<div id="photos" class="text-center"></div>
+	</div>
+
+	<div id="page_list" class="container my-3">
+
+		<div id="toolbar">
+
+			<select class="form-select" id="order" name="order">
+				<option value="0" selected>读取信息中</option>
+				<option value="-1">新增一条信息</option>
+				<option value="1">One</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+			</select>
+			<small>每次只能对1个信息操作，操作后需要保存</small>
+		</div>
+
+
+		<div>
+			<div class="input-group mt-3">
+				<span class="input-group-text">名称</span>
+				<input type="text" class="form-control" placeholder="shop_name" aria-label="shop_name" id="shop_name"
+					name="shop_name">
+				<span class="input-group-text">简称</span>
+				<input type="text" class="form-control" placeholder="short_name" aria-label="short_name" id="short_name"
+					name="short_name">
+			</div>
+
+
+
+			<div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
+				<input type="radio" class="btn-check" name="shop_type" id="shop_type1" autocomplete="off" checked>
+				<label class="btn btn-outline-primary" for="shop_type1">公式战</label>
+
+				<input type="radio" class="btn-check" name="shop_type" id="shop_type2" autocomplete="off">
+				<label class="btn btn-outline-primary" for="shop_type2">雀莊</label>
+
+				<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
+				<label class="btn btn-outline-primary" for="shop_type3">据点</label>
+				<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
+				<label class="btn btn-outline-primary" for="shop_type3">学校</label>
+				<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
+				<label class="btn btn-outline-primary" for="shop_type3">群组</label>
+			</div>
+
+			<div class="input-group mt-3">
+				<span class="input-group-text">经度</span>
+				<input type="number" class="form-control" placeholder="106.326806" aria-label="Username">
+				<span class="input-group-text">纬度</span>
+				<input type="number" class="form-control" placeholder="29.606753" aria-label="Server">
+			</div>
+			<small>从<a href="https://lbs.qq.com/getPoint/" target="_blank">腾讯地图</a>获取。【例】经106.326806,纬29.606753</small>
+
+			<div class="input-group mt-3">
+				<span class="input-group-text">地址</span>
+				<input type="text" class="form-control" placeholder="江苏省/南京市/秦淮区/龙台国际大厦/三楼XXX" aria-label="address"
+					aria-describedby="basic-addon1" id="address" name="address">
+			</div>
+			<small>注明：省/市/区</small>
+
+			<div class="input-group mt-3">
+				<span class="input-group-text">图片</span>
+				<textarea class="form-control" aria-label="With textarea"
+					placeholder="https://abc.com/def.jpg"></textarea>
+			</div>
+			<small>填写【图片URL链接】，一个图片一行。<br />
+				需到其他地方上传，比如<a href="https://cdnjson.com/" target="_blank">这个图床</a>(上传后看下方)</small>
+
+			<div class="input-group mt-3">
+				<span class="input-group-text">联络</span>
+				<textarea class="form-control" aria-label="With textarea" placeholder="QQ群号"></textarea>
+				<textarea class="form-control" aria-label="With textarea" placeholder="12345678"></textarea>
+			</div>
+			<small>左边写【联络方式的称呼】（QQ群号/手机号/直播间/微信号），一个一行。<br />
+				右边写【联络方式】（12345478/12344445555/https://bilibili.com/xxx）一个一行。</small>
+
+			<div class="input-group mt-3">
+				<span class="input-group-text">介绍</span>
+				<textarea class="form-control" aria-label="With textarea"
+					placeholder="大洋化学 REXX-II（八口）×3。营业时间：13:00~24:00，早茶局、通宵局建议提前预约。定期举办立直麻将赛事，可提供对局直播。"></textarea>
+			</div>
+
+			<div class="input-group mt-3 mb-3">
+				<span class="input-group-text">密码</span>
+				<button class="btn btn-danger" type="button">删除此信息</button>
+				<input type="password" class="form-control">
+
+				<button class="btn btn-primary" type="button">更新此信息</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.staticfile.org/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.staticfile.org/marked/11.1.0/marked.min.js"></script>
+</body>
+
+</html>
