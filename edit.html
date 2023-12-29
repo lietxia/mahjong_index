@@ -105,91 +105,83 @@
 
 	<div id="page_list" class="container my-3">
 
-		<div id="toolbar">
+		<select class="form-select" id="order" name="order">
+			<option value="0" selected>读取信息中</option>
+			<option value="-1">新增一条信息</option>
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+		</select>
+		<small>每次只能对1个信息操作，操作后需要保存</small>
 
-			<select class="form-select" id="order" name="order">
-				<option value="0" selected>读取信息中</option>
-				<option value="-1">新增一条信息</option>
-				<option value="1">One</option>
-				<option value="2">Two</option>
-				<option value="3">Three</option>
-			</select>
-			<small>每次只能对1个信息操作，操作后需要保存</small>
+		<div class="input-group mt-3">
+			<span class="input-group-text">名称</span>
+			<input type="text" class="form-control" placeholder="shop_name" aria-label="shop_name" id="shop_name"
+				name="shop_name">
+			<span class="input-group-text">简称</span>
+			<input type="text" class="form-control" placeholder="short_name" aria-label="short_name" id="short_name"
+				name="short_name">
 		</div>
 
+		<div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
+			<input type="radio" class="btn-check" name="shop_type" id="shop_type1" autocomplete="off" checked>
+			<label class="btn btn-outline-primary" for="shop_type1">公式战</label>
 
-		<div>
-			<div class="input-group mt-3">
-				<span class="input-group-text">名称</span>
-				<input type="text" class="form-control" placeholder="shop_name" aria-label="shop_name" id="shop_name"
-					name="shop_name">
-				<span class="input-group-text">简称</span>
-				<input type="text" class="form-control" placeholder="short_name" aria-label="short_name" id="short_name"
-					name="short_name">
-			</div>
+			<input type="radio" class="btn-check" name="shop_type" id="shop_type2" autocomplete="off">
+			<label class="btn btn-outline-primary" for="shop_type2">雀莊</label>
 
-
-
-			<div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
-				<input type="radio" class="btn-check" name="shop_type" id="shop_type1" autocomplete="off" checked>
-				<label class="btn btn-outline-primary" for="shop_type1">公式战</label>
-
-				<input type="radio" class="btn-check" name="shop_type" id="shop_type2" autocomplete="off">
-				<label class="btn btn-outline-primary" for="shop_type2">雀莊</label>
-
-				<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
-				<label class="btn btn-outline-primary" for="shop_type3">据点</label>
-				<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
-				<label class="btn btn-outline-primary" for="shop_type3">学校</label>
-				<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
-				<label class="btn btn-outline-primary" for="shop_type3">群组</label>
-			</div>
-
-			<div class="input-group mt-3">
-				<span class="input-group-text">经度</span>
-				<input type="number" class="form-control" placeholder="106.326806" aria-label="Username">
-				<span class="input-group-text">纬度</span>
-				<input type="number" class="form-control" placeholder="29.606753" aria-label="Server">
-			</div>
-			<small>从<a href="https://lbs.qq.com/getPoint/" target="_blank">腾讯地图</a>获取。【例】经106.326806,纬29.606753</small>
-
-			<div class="input-group mt-3">
-				<span class="input-group-text">地址</span>
-				<input type="text" class="form-control" placeholder="江苏省/南京市/秦淮区/龙台国际大厦/三楼XXX" aria-label="address"
-					aria-describedby="basic-addon1" id="address" name="address">
-			</div>
-			<small>注明：省/市/区</small>
-
-			<div class="input-group mt-3">
-				<span class="input-group-text">图片</span>
-				<textarea class="form-control" aria-label="With textarea"
-					placeholder="https://abc.com/def.jpg"></textarea>
-			</div>
-			<small>填写【图片URL链接】，一个图片一行。<br />
-				需到其他地方上传，比如<a href="https://cdnjson.com/" target="_blank">这个图床</a>(上传后看下方)</small>
-
-			<div class="input-group mt-3">
-				<span class="input-group-text">联络</span>
-				<textarea class="form-control" aria-label="With textarea" placeholder="QQ群号"></textarea>
-				<textarea class="form-control" aria-label="With textarea" placeholder="12345678"></textarea>
-			</div>
-			<small>左边写【联络方式的称呼】（QQ群号/手机号/直播间/微信号），一个一行。<br />
-				右边写【联络方式】（12345478/12344445555/https://bilibili.com/xxx）一个一行。</small>
-
-			<div class="input-group mt-3">
-				<span class="input-group-text">介绍</span>
-				<textarea class="form-control" aria-label="With textarea"
-					placeholder="大洋化学 REXX-II（八口）×3。营业时间：13:00~24:00，早茶局、通宵局建议提前预约。定期举办立直麻将赛事，可提供对局直播。"></textarea>
-			</div>
-
-			<div class="input-group mt-3 mb-3">
-				<span class="input-group-text">密码</span>
-				<button class="btn btn-danger" type="button">删除此信息</button>
-				<input type="password" class="form-control">
-
-				<button class="btn btn-primary" type="button">更新此信息</button>
-			</div>
+			<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
+			<label class="btn btn-outline-primary" for="shop_type3">据点</label>
+			<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
+			<label class="btn btn-outline-primary" for="shop_type3">学校</label>
+			<input type="radio" class="btn-check" name="shop_type" id="shop_type3" autocomplete="off">
+			<label class="btn btn-outline-primary" for="shop_type3">群组</label>
 		</div>
+
+		<div class="input-group mt-3">
+			<span class="input-group-text">经度</span>
+			<input type="number" class="form-control" placeholder="106.326806" aria-label="Username">
+			<span class="input-group-text">纬度</span>
+			<input type="number" class="form-control" placeholder="29.606753" aria-label="Server">
+		</div>
+		<small>从<a href="https://lbs.qq.com/getPoint/" target="_blank">腾讯地图</a>获取。【例】经106.326806,纬29.606753</small>
+
+		<div class="input-group mt-3">
+			<span class="input-group-text">地址</span>
+			<input type="text" class="form-control" placeholder="江苏省/南京市/秦淮区/龙台国际大厦/三楼XXX" aria-label="address"
+				aria-describedby="basic-addon1" id="address" name="address">
+		</div>
+		<small>注明：省/市/区</small>
+
+		<div class="input-group mt-3">
+			<span class="input-group-text">图片</span>
+			<textarea class="form-control" aria-label="With textarea" placeholder="https://abc.com/def.jpg"></textarea>
+		</div>
+		<small>填写【图片URL链接】，一个图片一行。<br />
+			需到其他地方上传，比如<a href="https://cdnjson.com/" target="_blank">这个图床</a>(上传后看下方)</small>
+
+		<div class="input-group mt-3">
+			<span class="input-group-text">联络</span>
+			<textarea class="form-control" aria-label="With textarea" placeholder="QQ群号"></textarea>
+			<textarea class="form-control" aria-label="With textarea" placeholder="12345678"></textarea>
+		</div>
+		<small>左边写【联络方式的称呼】（QQ群号/手机号/直播间/微信号），一个一行。<br />
+			右边写【联络方式】（12345478/12344445555/https://bilibili.com/xxx）一个一行。</small>
+
+		<div class="input-group mt-3">
+			<span class="input-group-text">介绍</span>
+			<textarea class="form-control" aria-label="With textarea"
+				placeholder="大洋化学 REXX-II（八口）×3。营业时间：13:00~24:00，早茶局、通宵局建议提前预约。定期举办立直麻将赛事，可提供对局直播。"></textarea>
+		</div>
+
+		<div class="input-group mt-3 mb-3">
+			<span class="input-group-text">密码</span>
+			<button class="btn btn-danger" type="button">删除此信息</button>
+			<input type="password" class="form-control">
+
+			<button class="btn btn-primary" type="button">更新此信息</button>
+		</div>
+
 	</div>
 
 	<script src="https://cdn.staticfile.org/jquery/3.6.4/jquery.min.js"></script>
