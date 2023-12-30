@@ -77,11 +77,22 @@
 	<form id="page_list" class="container my-3">
 
 		<select class="form-select" id="order" name="order" onchange="update_data()">
-			<option value="-2" selected>选择目标</option>
 			<option value="-1">新增一条信息</option>
 		</select>
-		<small>每次只能对1个信息操作，操作后需要保存</small>
 
+		<div class="input-group mt-3 mb-3">
+			<span class="input-group-text">操作密码</span>
+
+			<input type="password" class="form-control" id="passwd" name="passwd">
+			<span class="input-group-text">二次确认</span>
+			<select class="form-select" id="order_check" name="order_check">
+				<option value="0">不修改</option>
+				<option value="1">修改雀庄信息</option>
+				<option value="2">删除雀庄信息</option>
+				<option value="3">新增雀庄信息</option>
+			</select>
+		</div>
+		<hr>
 
 		<div class="input-group mt-3">
 			<span class="input-group-text">名称</span>
@@ -108,10 +119,10 @@
 			<span class="input-group-text">类型</span>
 			<select class="form-select" id="shop_type" name="shop_type">
 				<option value="0">公式战</option>
-				<option value="0">雀莊</option>
-				<option value="0">据点</option>
-				<option value="0">学校</option>
-				<option value="0">群组</option>
+				<option value="2">雀莊</option>
+				<option value="3">据点</option>
+				<option value="4">学校</option>
+				<option value="5">群组</option>
 			</select>
 		</div>
 
@@ -154,13 +165,9 @@
 				placeholder="大洋化学 REXX-II（八口）×3。营业时间：13:00~24:00，早茶局、通宵局建议提前预约。定期举办立直麻将赛事，可提供对局直播。" id="about"
 				name="about"></textarea>
 		</div>
-
-		<div class="input-group mt-3 mb-3">
-			<span class="input-group-text">密码</span>
-			<button class="btn btn-danger" type="button">删除此信息</button>
-			<input type="password" class="form-control" id="passwd" name="passwd">
-
-			<button class="btn btn-primary" type="button">更新此信息</button>
+		<small>支持<a href="https://markdown.com.cn/basic-syntax/" target="_blank">markdown语法</a></small>
+		<div class="d-grid gap-2">
+			<button class="btn btn-primary my-3" type="button" onclick="post_data()">提交(每次只能操作1条)</button>
 		</div>
 
 	</form>
@@ -206,6 +213,21 @@
 				target.appendChild(op);
 			}
 		}
+
+		function post_data() {
+			$.post("https://cdn.r-mj.com/api/map.php",
+				$("form").serialize())
+				.done(function (data) {
+					var a = JSON.parse(data);
+					console.log(a);
+					if (Object.hasOwnProperty.call(a, "msg")) {
+						alert(a.msg);
+					} else {
+						alert("未知错误");
+					}
+				});
+		}
+
 		function update_data() {
 			var order = document.getElementById('order');
 			var order_value = order.options[order.selectedIndex].value;
@@ -242,12 +264,13 @@
 		}
 
 		(function () {
-			// $.getJSON("list.json", function (data) {
-			// 	window.web_cache = data;
-			// 	create_list();
-			// });
-			window.web_cache = [[1, "烟台·海色立直麻将", 14, 5, "烟台海色", 121.457174, 37.431029, "山东烟台莱山区金地格林梦想小区", "【烟台海色立直麻将交流群】\n机型：雀友H100日麻机两台；国标点红5机器一台\n地址：莱山区金地格林梦想小区（雀友一台）；莱山区飞龙金滩花园熙园（雀友一台）；芝罘区大海阳路宜间查馆量贩式剧本体验馆（点红5国标）\nQQ群：1030804341\n使用机器需提前至少一天进群向桌主预约，前两个地方均禁烟禁有料，感谢理解", ["QQ群", 1030804341], []], [0, "蕙嘉韵雀庄", 9, 4, "蕙嘉韵", 120.719162, 31.324848, "苏州工业园区嘉瑞巷8号乐嘉大厦 北面写字楼2122室", "雀庄简述：雀庄营业面积100平米，共设有两个包厢，包厢面积约15平米左右。配备有大洋JPC 四口机两台，雀友四口机1台，大洋REX3 八口机两台。雀庄禁烟。", ["QQ群", 685239677, "联系电话", 15250414987], ["https://s.r-mj.com/img/quezhuang/hjy1.jpg", "https://s.r-mj.com/img/quezhuang/hjy2.jpg", "https://s.r-mj.com/img/quezhuang/hjy3.jpg"]]];
-			create_list();
+			$.getJSON("https://cdn.r-mj.com/api/map.json", function (data) {
+				window.web_cache = data;
+				create_list();
+			});
+
+			// window.web_cache = [[1, "烟台·海色立直麻将", 14, 5, "烟台海色", 121.457174, 37.431029, "山东烟台莱山区金地格林梦想小区", "【烟台海色立直麻将交流群】\n机型：雀友H100日麻机两台；国标点红5机器一台\n地址：莱山区金地格林梦想小区（雀友一台）；莱山区飞龙金滩花园熙园（雀友一台）；芝罘区大海阳路宜间查馆量贩式剧本体验馆（点红5国标）\nQQ群：1030804341\n使用机器需提前至少一天进群向桌主预约，前两个地方均禁烟禁有料，感谢理解", ["QQ群", 1030804341], []], [0, "蕙嘉韵雀庄", 9, 4, "蕙嘉韵", 120.719162, 31.324848, "苏州工业园区嘉瑞巷8号乐嘉大厦 北面写字楼2122室", "雀庄简述：雀庄营业面积100平米，共设有两个包厢，包厢面积约15平米左右。配备有大洋JPC 四口机两台，雀友四口机1台，大洋REX3 八口机两台。雀庄禁烟。", ["QQ群", 685239677, "联系电话", 15250414987], ["https://s.r-mj.com/img/quezhuang/hjy1.jpg", "https://s.r-mj.com/img/quezhuang/hjy2.jpg", "https://s.r-mj.com/img/quezhuang/hjy3.jpg"]]];
+			// create_list();
 		})()
 	</script>
 </body>
