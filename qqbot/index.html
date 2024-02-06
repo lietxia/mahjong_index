@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>redirect</title>
+	<script>
+		if (window.location.search.substring(0, 5) === "?http") {
+			window.open(decodeURIComponent(window.location.search.substring(1)), "_self")
+		}
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>
