@@ -112,6 +112,12 @@ function initMap() {
 	var geo = [];
 	var bounds = new TMap.LatLngBounds();
 	for (let i = 0; i < list.length; i++) {
+		if (
+			list[i][0] == '<span class="badge rounded-pill bg-secondary">学校</span>'
+			|| list[i][0] == '<span class="badge rounded-pill bg-secondary">群组</span>'
+		) {
+			continue;
+		}
 		if (!(list[i][6] > 0 && list[i][5] > 0)) {
 			continue;
 		}
