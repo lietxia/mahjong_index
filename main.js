@@ -111,7 +111,7 @@ function initMap() {
 	var list = window.web_cache;
 	var geo = [];
 	var bounds = new TMap.LatLngBounds();
-	for (let i = 0; i < list.length; i++) {
+	for (let i = 0, j = 0; i < list.length; i++) {
 		if (
 			list[i][0] == '<span class="badge rounded-pill bg-secondary">学校</span>'
 			|| list[i][0] == '<span class="badge rounded-pill bg-secondary">群组</span>'
@@ -130,12 +130,11 @@ function initMap() {
 		if (p == null) {
 			continue;
 		}
-
-
-		geo[i] = { // 点数组
+		j++
+		geo.push({ // 点数组
 			id: i,
 			position: p
-		};
+		});
 		bounds.extend(p);
 	}
 	//初始化地图
