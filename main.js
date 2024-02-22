@@ -120,6 +120,10 @@ function initMap() {
 		} else {
 			var p = new TMap.LatLng(list[i][6], list[i][5]);
 		}
+		if (p == null) {
+			continue;
+		}
+		console.log(p);
 
 		geo[i] = { // 点数组
 			id: i,
@@ -137,13 +141,15 @@ function initMap() {
 	//初始marker
 	var marker = new TMap.MarkerCluster({
 		id: 'cluster',
-		map: map,
-		minimumClusterSize: 3, // 形成聚合簇的最小个数
-		geometries: geo,
-		zoomOnClick: true, // 点击簇时放大至簇内点分离
+		map: map, //指定地图容器
+		enableDefaultStyle: true, // 使用默认的聚合样式
+		minimumClusterSize: 3, // 可以形成聚合簇的最小个数      
+		zoomOnClick: true, // 点击聚合簇时，地图放大使得簇内点分离展示
 		gridSize: 15, // 聚合算法的可聚合距离
-		averageCenter: false, // 每个聚和簇的中心是否应该是聚类中所有标记的平均值
-		maxZoom: 10 // 采用聚合策略的最大缩放级别
+		averageCenter: false, // 每个聚合簇的中心是否应该是聚类中所有标记的平均值
+		maxZoom: 10, // 启动聚合策略的最大缩放级别
+		//设置数据组
+		geometries: geo
 	});
 
 	//初始化infoWindow
