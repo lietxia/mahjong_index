@@ -112,7 +112,7 @@ function initMap() {
 	var geo = [];
 	var bounds = new TMap.LatLngBounds();
 	for (let i = 0; i < list.length; i++) {
-		if (list[i][6] == 0 || list[i][5] == 0) {
+		if (!(list[i][6] > 0 && list[i][5] > 0)) {
 			continue;
 		}
 		if (list[i][6] > 90) {
