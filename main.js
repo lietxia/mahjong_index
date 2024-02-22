@@ -112,6 +112,9 @@ function initMap() {
 	var geo = [];
 	var bounds = new TMap.LatLngBounds();
 	for (let i = 0; i < list.length; i++) {
+		if (list[i][6] == 0 || list[i][5] == 0) {
+			continue;
+		}
 		var p = new TMap.LatLng(list[i][6], list[i][5]);
 		geo[i] = { // 点数组
 			id: i,
