@@ -123,13 +123,14 @@ function initMap() {
 		}
 		if (list[i][6] > 90) {
 			var p = new TMap.LatLng(list[i][5], list[i][6]);
+			console.log(p);
 		} else {
 			var p = new TMap.LatLng(list[i][6], list[i][5]);
 		}
 		if (p == null) {
 			continue;
 		}
-		console.log(p);
+
 
 		geo[i] = { // 点数组
 			id: i,
