@@ -115,7 +115,12 @@ function initMap() {
 		if (list[i][6] == 0 || list[i][5] == 0) {
 			continue;
 		}
-		var p = new TMap.LatLng(list[i][6], list[i][5]);
+		if (list[i][6] > 6) {
+			var p = new TMap.LatLng(list[i][5], list[i][6]);
+		} else {
+			var p = new TMap.LatLng(list[i][6], list[i][5]);
+		}
+
 		geo[i] = { // 点数组
 			id: i,
 			position: p
