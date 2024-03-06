@@ -1,0 +1,17 @@
+﻿#containerpad {
+    margin: auto;
+    padding: 20px 5%;
+    max-width: 880px;
+    border: 1px solid lightgrey;
+    background-color: #fff;
+}
+#content {
+    margin: auto;
+    padding: 0;
+    max-width: 700px;
+    min-height: 860px;
+}
+#video_frame {
+	padding: 0;
+	text-align: center;
+}

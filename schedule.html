@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Golf Pairings Generator: Play All Golfers Scheduler - GolfSoftware.com</title>
+	<link href="css/kendo.common.min.css" rel="stylesheet" />
+	<link href="css/kendo.silver.min.css" rel="stylesheet">
+	<!--	<link href="css/app.css" rel="stylesheet"/>-->
+
+	<!-- added by Steve -->
+	<!-- CSS Global Compulsory -->
+	<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- CSS Header and Footer -->
+	<link rel="stylesheet" href="css/gsheader.css">
+	<link rel="stylesheet" href="css/footer-v1.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/line-icons/line-icons.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="css/default.css" id="style_color">
+	<link rel="stylesheet" href="css/dark.css">
+
+	<link rel="stylesheet" title="CSS" type="text/css" href="css/old-gs_layout.css" media="all" />
+	<link rel="stylesheet" title="CSS" type="text/css" href="css/old-gs_styles.css" media="all" />
+	<!-- added by Steve -->
+
+	<script src="https://cdn.staticfile.net/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/kendo.web.min.js"></script>
+	<script src="js/schedule.js"></script>
+	<style>
+		.tabTable {
+			border-spacing: 0;
+			border-collapse: collapse;
+		}
+
+		.tabTable td {
+			border: none;
+			padding: 5px 15px;
+			text-align: left;
+			vertical-align: top;
+		}
+
+		.infoTable {
+			border-spacing: 0;
+			border-collapse: collapse;
+		}
+
+		.infoTable td {
+			border: solid grey 1px;
+			height: 18px;
+			width: 18px;
+			padding: 5px;
+			text-align: center;
+			white-space: nowrap
+		}
+	</style>
+</head>
+
+<body id="playAll">
+	<div style="padding: 8px 16px; background-color: darkgreen; color: white; font-size: 18px">
+		Build a schedule
+	</div>
+	<div id="playAllOptions" style="padding: 15px; background-color: lightyellow">
+		<table>
+			<tr>
+				<td>
+					Pairing options:
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 10px">
+					<select id="playAllXsomes" data-role="dropdownlist" data-height="300" data-change="numGolfers"
+						style="width: 225px">
+						<option value="2">Golfers play in 2-somes</option>
+						<option value="3">Golfers play in 3-somes</option>
+						<option value="4">Golfers play in 4-somes</option>
+						<option value="5">Golfers play in 5-somes</option>
+						<option value="6">Golfers play in 6-somes</option>
+						<option value="7">Golfers play in 7-somes</option>
+						<option value="8">Golfers play in 8-somes</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 10px">
+					<select id="playAllGolfers" data-role="dropdownlist" data-height="300" style="width: 225px">
+						<option value='1'>1 golfers</option>"
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 10px">
+					<select id="playAllEvents" data-role="dropdownlist" style="width: 225px">
+						<option value="2">2 events</option>
+						<option value="3">3 events</option>
+						<option value="4">4 events</option>
+						<option value="5">5 events</option>
+						<option value="6">6 events</option>
+						<option value="7">7 events</option>
+						<option value="8">8 events</option>
+						<option value="9">9 events</option>
+						<option value="10">10 events</option>
+						<option value="11">11 events</option>
+						<option value="12">12 events</option>
+						<option value="13">13 events</option>
+						<option value="14">14 events</option>
+						<option value="15">15 events</option>
+						<option value="16">16 events</option>
+						<option value="17">17 events</option>
+						<option value="18">18 events</option>
+						<option value="19">19 events</option>
+						<option value="20">20 events</option>
+						<option value="21">21 events</option>
+						<option value="22">22 events</option>
+						<option value="23">23 events</option>
+						<option value="24">24 events</option>
+						<option value="25">25 events</option>
+						<option value="26">26 events</option>
+						<option value="27">27 events</option>
+						<option value="28">28 events</option>
+						<option value="29">29 events</option>
+						<option value="30">30 events</option>
+						<option value="31">31 events</option>
+						<option value="32">32 events</option>
+						<option value="33">33 events</option>
+						<option value="34">34 events</option>
+						<option value="35">35 events</option>
+						<option value="36">36 events</option>
+						<option value="37">37 events</option>
+						<option value="38">38 events</option>
+						<option value="39">39 events</option>
+						<option value="40">40 events</option>
+						<option value="41">41 events</option>
+						<option value="42">42 events</option>
+						<option value="43">43 events</option>
+						<option value="44">44 events</option>
+						<option value="45">45 events</option>
+						<option value="46">46 events</option>
+						<option value="47">47 events</option>
+						<option value="48">48 events</option>
+						<option value="49">49 events</option>
+						<option value="50">50 events</option>
+						<option value="51">51 events</option>
+						<option value="52">52 events</option>
+					</select>
+				</td>
+				<td style="padding: 10px">
+					<span id="playAllBuild" data-role="button" onclick="startWorker()">&nbsp;Build schedule
+						...&nbsp;</span>
+				</td>
+			</tr>
+		</table>
+
+
+	</div>
+
+	<!--<p>Count numbers: <output id="result"></output></p>-->
+	<!--<button onclick="startWorker()">Start Worker</button>-->
+	<!--<button onclick="stopWorker()">Stop Worker</button>-->
+	<!--<br><br>-->
+
+	<div id="playAllResults" style="padding: 15px; display: none">
+		Calculating iteration #<span id="iteration">1</span>&nbsp;&nbsp;
+		<span id="bestiteration" style="padding: 5px 10px; border: 1px solid lightgray">Please wait...</span>
+		<span id="playAllBuildAnother" data-role="button" onclick="stopWorker()">&nbsp;Build another schedule
+			...&nbsp;</span>
+
+		<br><br>
+
+		<div id="parametersTabs" data-role="tabstrip" data-animation="false" style="border: none">
+			<ul>
+				<li class="k-state-active">Pairings</li>
+				<li>Pairing optimization</li>
+				<li>Time slot optimization</li>
+				<!--<li>Course rotation optimization</li>-->
+			</ul>
+
+			<div style="padding: 15px">
+				<div id="pairings"></div>
+			</div>
+
+			<div style="padding: 15px">
+				<b>Number of times one golfer plays another golfer</b>
+				<div id="pairingRepeats"></div>
+			</div>
+
+			<div style="padding: 15px">
+				<table class="tabTable">
+					<tr>
+						<td>
+							<b>Number of times golfer<br>
+								plays the time slot</b>
+							<div id="timeslots"></div>
+						</td>
+						<td>
+							<b>Number of times golfer<br>
+								repeats play in same time slot</b>
+							<div id="timeslotRepeats"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<!--<div style="padding: 15px">-->
+			<!--<table class="tabTable">-->
+			<!--<tr>-->
+			<!--<td>-->
+			<!--<b>Number of times golfer<br>-->
+			<!--plays the course</b>-->
+			<!--<div id="coursesPlayed"></div>-->
+			<!--</td>-->
+			<!--<td>-->
+			<!--<b>Number of times golfer<br>-->
+			<!--repeats	play on same course</b>-->
+			<!--<div id="coursesPlayedRepeats"></div>-->
+			<!--</td>-->
+			<!--</tr>-->
+			<!--</table>-->
+			<!--</div>-->
+		</div>
+	</div>
+	</div>
+</body>
+
+<script>
+	//	var xsomes = 4; //2;
+	//	var players = 20;
+	//	var events = 19;
+	//	var teams = 5; //10;
+	//	var courses = 2;
+	//	var groups = [0,20];
+	//	var timeslotgroups = [0,20];
+	//	var groups = [0,10,20];
+	//	var timeslotgroups = [0,10,20];
+
+	//var xsomes = 4;
+	//var players = 20;
+	//var events = 19;
+	//var teams = 5;
+	//var courses = 1;
+	//var groups = [0,5];
+	//var timeslotgroups = [0,5];
+	//
+
+	$(document).ready(function () {
+		kendo.init($("#playAll"));
+		$("#playAllEvents").data("kendoDropDownList").value(7);
+		$("#playAllXsomes").data("kendoDropDownList").value(4);
+		numGolfers();
+	});
+
+
+	var xsomes;
+	var players;
+	var events;
+	var teams;
+	var courses;
+	var groups;
+	var timeslotgroups;
+
+	var worker;
+
+	//schedule.calculate(xsomes, players, events, courses, groups, 1);
+
+
+	function startWorker() {
+		$("#playAllOptions").hide();
+		$("#playAllBuildAnother").hide();
+		$("#playAllResults").show();
+		xsomes = $("#playAllXsomes").data("kendoDropDownList").value();
+		players = $("#playAllGolfers").data("kendoDropDownList").value();
+		events = $("#playAllEvents").data("kendoDropDownList").value();
+		teams = players / xsomes;
+		courses = 1;
+		groups = [0, teams];
+		timeslotgroups = [0, teams];
+		if (xsomes == 2) {
+			groups = [0, players];
+			timeslotgroups = [0, players];
+		}
+
+
+		if (typeof (worker) == "undefined") {
+			worker = new Worker("schedule.js");
+			worker.postMessage({ 'xsomes': xsomes, 'players': players, 'events': events, 'courses': courses, 'groups': groups, 'timeslotgroups': timeslotgroups });
+		}
+		worker.onmessage = function (event) {
+			if (event.data.iteration > 0) {
+				$("#playAllBuildAnother").show();
+				$("#iteration").html(event.data.iteration);
+				if (event.data.bestiteration > 0) {
+					$("#bestiteration").html("Iteration " + event.data.bestiteration + " produced the last best solution");
+				}
+			} else if (event.data[0][0] == 31) {//Courses played
+				coursesPlayed(event.data);
+			} else if (event.data[0] == 32) {//Courses repeats
+				//alert(event.data[0]);
+				coursesPlayedRepeats(event.data);
+			} else {
+				pairings(event.data);
+				pairingRepeats(event.data);
+				timeslots(event.data);
+				timeslotRepeats(event.data);
+			}
+		};
+	}
+
+	function stopWorker() {
+		worker.terminate();
+		worker = undefined;
+
+		$("#iteration").html("1");
+		$("#bestiteration").html("Please wait...");
+		$("#pairings").html("");
+		$("#pairingRepeats").html("");
+		$("#timeslots").html("");
+		$("#timeslotsRepeats").html("");
+		$("#playAllResults").hide();
+		$("#playAllOptions").show();
+
+
+
+		//location.reload();
+	}
+
+
+	function pairings(p) {
+		var s = "<table class='infoTable'>";
+		s += "<tr>";
+		s += "<td style='background-color: lightgray'></td>";
+		for (var t = 1; t <= teams; t++) {
+			s += "<td style='background-color: lightgray'>";
+			s += "Tee " + t;
+			s += "</td>";
+		}
+		s += "</tr>";
+		for (e = 1; e <= events; e++) {
+			s += "<tr>";
+			s += "<td style='background-color: lightgray'>";
+			s += "Event " + e;
+			s += "</td>";
+			for (t = 1; t <= teams; t++) {
+				s += "<td>";
+				for (var x = 1; x <= xsomes; x++) {
+					s += p[e][t][x];
+					if (x < xsomes) { s += "-"; }
+				}
+				s += "</td>";
+			}
+			s += "</tr>";
+		}
+		s += "</table>";
+		$("#pairings").html(s);
+	}
+
+	function pairingRepeats(p) {
+		var noplay = 0;
+		var maxRepeats = 0;
+		var numPlayed = schedule.createArray(players + 1, players + 1);
+		for (var x = 1; x <= players; x++) {
+			for (var y = 1; y <= players; y++) {
+				numPlayed[x][y] = 0;
+			}
+		}
+		for (var player = 1; player <= players; player++) {
+			var y = player;
+			var x = player;
+			numPlayed[x][y] = "";
+			for (var player2 = 1; player2 <= player - 1; player2++) {
+				for (var week = 1; week <= events; week++) {
+					for (var TeeTime = 1; TeeTime <= teams; TeeTime++) {
+						for (var element = 1; element <= xsomes; element++) {
+							if (p[week][TeeTime][element] == player) {
+								for (var element2 = 1; element2 <= xsomes; element2++) {
+									if (p[week][TeeTime][element2] == player2) {
+										y = player;
+										x = player2;
+										numPlayed[x][y] = numPlayed[x][y] + 1;
+
+										y = player2;
+										x = player;
+										numPlayed[x][y] = numPlayed[x][y] + 1;
+
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		var s = "<table class='infoTable'>";
+		//Header
+		//	s += "<tr><td colspan='2' style='background-color: lightgray'></td><td colspan='999' style='text-align: left; background-color: lightgray'>Players</td></tr>";
+		//	s += "<tr><td colspan='2' style='background-color: lightgray'></td>";
+		s += "<tr><td style='background-color: lightgrey'>&nbsp;Player&nbsp;</td>";
+		for (var x = 1; x <= players; x++) {
+			s += "<td style='background-color: lightgrey'>";
+			s += x;
+			s += "</td>";
+		}
+		s += "</tr>";
+		for (x = 1; x <= players; x++) {
+			s += "<tr>";
+			s += "<td style='background-color: lightgrey;'>" + x + "</td>";
+			for (var y = 1; y <= players; y++) {
+				if (x == y) {
+					s += "<td style='background-color: grey;'>";
+				} else {
+					if (numPlayed[x][y] == 0) {
+						s += "<td style='background-color: #EDEDED;'>";
+						noplay += 1;
+					} else {
+						s += "<td>";
+						if (numPlayed[x][y] > maxRepeats) {
+							maxRepeats = numPlayed[x][y];
+						}
+						s += numPlayed[x][y];
+					}
+				}
+				s += "</td>";
+			}
+			s += "</tr>";
+		}
+		s += "</table>";
+		if (noplay > 0) {
+			s = "(Number of pairings that do not play together " + noplay / 2 + ")" + s; //<br>" + "Maximum repeats " + (maxRepeats-1) + s;
+		}
+		$("#pairingRepeats").html(s);
+	}
+
+	function timeslots(p) {
+		//'===How many times has player played teetime=======
+		var timeSlotsPlayed = schedule.createArray(players + 1, teams + 1);
+		for (var p1 = 0; p1 <= players; p1++) {
+			for (var t = 0; t <= teams; t++) {
+				timeSlotsPlayed[p1][t] = 0
+			}
+		}
+		for (var TeeTime = 1; TeeTime <= teams; TeeTime++) {
+			for (var week = 1; week <= events; week++) {
+				for (var element = 1; element <= xsomes; element++) {
+					timeSlotsPlayed[p[week][TeeTime][element]][TeeTime] += 1;
+				}
+			}
+		}
+
+		var s = "<table class='infoTable'>";
+		s += "<tr><td colspan='2' style='background-color: lightgray'></td><td colspan='999' style='background-color: lightgray'>Time slot</td></tr>";
+		s += "<tr><td colspan='2' style='background-color: lightgray'></td>";
+		for (var y = 1; y <= teams; y++) {
+			s += "<td style='background-color: lightgray'>" + y + "</td>";
+		}
+		s += "</tr>";
+
+		for (var x = 1; x <= players; x++) {
+			s += "<tr>";
+			s += "<td style='background-color: lightgray; border-bottom: 1px solid lightgray; border-top: 1px solid lightgray'>";
+			if (x == 1) { s += "P" }
+			if (x == 2) { s += "l" }
+			if (x == 3) { s += "a" }
+			if (x == 4) { s += "y" }
+			if (x == 5) { s += "e" }
+			if (x == 6) { s += "r" }
+			s += "</td>";
+			s += "<td style='background-color: lightgray'>" + x + "</td>";
+
+			for (y = 1; y <= teams; y++) {
+				s += "<td>";
+				s += timeSlotsPlayed[x][y];
+				s += "</td>";
+			}
+			s += "</tr>";
+		}
+		s += "</table>";
+
+		$("#timeslots").html(s);
+
+
+
+		// For player = 1 To players
+		// .Row = player
+		// For TeeTime = 1 To TEETIMES
+		// .Col = TeeTime
+		// .Text = timeSlotsPlayed(player, TeeTime)
+		// Next TeeTime
+		// Next player
+
+	}
+
+	function timeslotRepeats(p) {
+		//'===How many times has player played teetime=======
+		var timeSlotsRepeated = schedule.createArray(players + 1);
+		for (var p1 = 0; p1 <= players; p1++) {
+			timeSlotsRepeated[p1] = 0
+		}
+		//	for (var TeeTime = 1; TeeTime <= teams; TeeTime++) {
+		//		for (var week = 1; week <= events; week++) {
+		//			for (var element = 1; element <= xsomes; element++) {
+		//				timeSlotsPlayed[p[week][TeeTime][element]][TeeTime] += 1;
+		//			}
+		//		}
+		//	}
+
+
+		//	'Convert PlayerWhoWillPlay(week, teetime, element)  =  player number
+		//	' TO ->
+		//	'Playerteetime(player, week) = teetime
+		var playerTeeTime = schedule.createArray(players + 1, events + 1);
+		//	ReDim Playerteetime(1 To players, 1 To WEEKS) As Long
+		//	For week = 1 To WEEKS
+		//	For TeeTime = 1 To TEETIMES
+		//	For element = 1 To XSOMES
+		//	Playerteetime(PlayerWhoWillPlay(week, TeeTime, element), week) = TeeTime
+		//	Next element
+		//	Next TeeTime
+		//	Next week
+		for (var week = 1; week <= events; week++) {
+			for (var TeeTime = 1; TeeTime <= teams; TeeTime++) {
+				for (var element = 1; element <= xsomes; element++) {
+					playerTeeTime[p[week][TeeTime][element]][week] = TeeTime
+				}
+			}
+		}
+
+
+		// '==Number of Times player repeats same tee in a row=============
+		// If players < 10 Then .MaxRows = 10 Else .MaxRows = players
+		//	 For player = 1 To players
+		//	 For week = 1 To WEEKS - 1
+		//	 If Playerteetime(player, week) = Playerteetime(player, week + 1) Then
+		//	 .Row = player
+		//	 .Text = Val(.Text) + 1
+		//	 End If
+		//	 Next week
+		//	 Next player
+
+		for (var player = 1; player <= players; player++) {
+			for (week = 1; week <= events - 1; week++) {
+				if (playerTeeTime[player][week] == playerTeeTime[player][week + 1]) {
+					//			.Row = player;
+					//			.Text = Conversion.Val(.Text) + 1;
+					timeSlotsRepeated[player] += 1;
+				}
+			}
+		}
+
+
+
+
+
+
+
+		var s = "<table class='infoTable'>";
+		s += "<tr><td style='background-color: lightgray'>Player</td><td style='background-color: lightgray'>Time slot repeats</td></tr>";
+		for (player = 1; player <= players; player++) {
+			s += "<tr>";
+			s += "<td style='background-color: lightgray'>" + player + "</td>";
+			s += "<td>" + timeSlotsRepeated[player] + "</td>";
+			s += "</tr>";
+		}
+		s += "</table>";
+		$("#timeslotRepeats").html(s);
+
+
+	}
+
+	function coursesPlayed(p) {
+		var s = "<table class='infoTable'>";
+		s += "<tr><td style='background-color: lightgray'>Team</td>";
+		for (var c = 1; c <= courses; c++) {
+			s += "<td style='background-color: lightgray'>Course #" + c + "</td>";
+		}
+		s += "</tr>";
+
+		for (var x = 1; x <= players; x++) {
+			s += "<tr>";
+			s += "<td style='background-color: lightgray'>" + x + "</td>";
+			for (c = 1; c <= courses; c++) {
+				s += "<td>";
+				s += p[x][c];
+				s += "</td>";
+			}
+			s += "</tr>";
+		}
+		s += "</table>";
+
+		$("#coursesPlayed").html(s);
+	}
+
+	function coursesPlayedRepeats(p) {
+		var s = "<table class='infoTable'>";
+		s += "<tr><td style='background-color: lightgray'>Team</td>";
+		s += "<td style='background-color: lightgray'>Course repeats</td></tr>";
+
+		for (var x = 1; x <= players; x++) {
+			s += "<tr>";
+			s += "<td style='background-color: lightgray'>" + x + "</td>";
+			s += "<td>" + p[x] + "</td>";
+			s += "</tr>";
+		}
+		s += "</table>";
+
+		$("#coursesPlayedRepeats").html(s);
+	}
+
+
+	function numGolfers() {
+		var xsomes = parseInt($("#playAllXsomes").data("kendoDropDownList").value());
+		$("#playAllGolfers").data("kendoDropDownList").dataSource.data([]);
+		for (var p = xsomes * 2; p <= 100; p = p + xsomes) {
+			$("#playAllGolfers").data("kendoDropDownList").dataSource.add({ "text": p + " golfers", "value": p });
+		}
+		$("#playAllGolfers").data("kendoDropDownList").value(xsomes * 4);
+	}
+
+
+
+</script>
+
+</html>
