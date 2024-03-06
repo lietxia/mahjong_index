@@ -9,6 +9,7 @@ var schedule;
     var TimeSlotGroupRangeStart;
     var TimeSlotGroupRangeEnd;
     function calculate(XSOMES, players, WEEKS, COURSES, mvarGroupEnd, mvarTimeSlotGroupEnd) {
+        console.log(XSOMES, players, WEEKS, COURSES, mvarGroupEnd, mvarTimeSlotGroupEnd);
         var GROUPS = mvarGroupEnd.length - 1;
         var mvarGroupStart = createArray(GROUPS + 1);
         mvarGroupStart[1] = 1;
