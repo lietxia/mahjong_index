@@ -72,13 +72,15 @@
 				<td style="padding: 10px">
 					<select id="playAllXsomes" data-role="dropdownlist" data-height="300" data-change="numGolfers"
 						style="width: 225px">
-						<option value="2">Golfers play in 2-somes</option>
-						<option value="3">Golfers play in 3-somes</option>
+						<!-- <option value="2">Golfers play in 2-somes</option>
+						<option value="3">Golfers play in 3-somes</option> -->
 						<option value="4">Golfers play in 4-somes</option>
+						<!-- 
 						<option value="5">Golfers play in 5-somes</option>
 						<option value="6">Golfers play in 6-somes</option>
 						<option value="7">Golfers play in 7-somes</option>
-						<option value="8">Golfers play in 8-somes</option>
+						<option value="8">Golfers play in 8-somes</option> 
+						-->
 					</select>
 				</td>
 			</tr>
@@ -143,6 +145,14 @@
 						<option value="50">50 events</option>
 						<option value="51">51 events</option>
 						<option value="52">52 events</option>
+						<option value="53">53 events</option>
+						<option value="54">54 events</option>
+						<option value="55">55 events</option>
+						<option value="56">56 events</option>
+						<option value="57">57 events</option>
+						<option value="58">58 events</option>
+						<option value="59">59 events</option>
+						<option value="60">60 events</option>
 					</select>
 				</td>
 				<td style="padding: 10px">
@@ -609,7 +619,7 @@
 	function numGolfers() {
 		var xsomes = parseInt($("#playAllXsomes").data("kendoDropDownList").value());
 		$("#playAllGolfers").data("kendoDropDownList").dataSource.data([]);
-		for (var p = xsomes * 2; p <= 100; p = p + xsomes) {
+		for (var p = xsomes * 2; p <= 256; p = p + xsomes) {
 			$("#playAllGolfers").data("kendoDropDownList").dataSource.add({ "text": p + " golfers", "value": p });
 		}
 		$("#playAllGolfers").data("kendoDropDownList").value(xsomes * 4);
