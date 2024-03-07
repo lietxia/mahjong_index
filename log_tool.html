@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+	<meta charset="UTF-8"/>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<title>Document</title>
 </head>
 <body>
-$END$
+old<textarea id="old_log"></textarea><br/>
+new<textarea id="new_log"></textarea><br/>
+<button onclick="run()">run</button>
+<br/>
+result_old<textarea id="result_old"></textarea><br/>
+result_new<textarea id="result_new"></textarea><br/>
+<script>
+    function run() {
+        const old_log = document.getElementById('old_log').value.trim();
+        const new_log = document.getElementById('new_log').value.trim();
+        const arr_old = old_log.split(/\n+/);
+        const arr_new = new_log.split(/\n+/);
+        let result_old = {};
+        let result_new = {};
+        arr_old.forEach((value) => {
+            const v = value.split(",")[0];
+            result_old[v] = value;
+        });
+        arr_new.forEach((value) => {
+            const v = value.split(",")[0];
+            result_new[v] = value;
+        });
+        let text_old = "INSERT INTO `rate_log`(`idx`, `logtime`, `acid`, `phone1`, `phone2`, `phone3`, `phone4`, `point1`, `point2`, `point3`, `point4`, `score1`, `score2`, `score3`, `score4`) VALUES ";
+        let text_new = 'INSERT INTO `rate_log`(`idx`, `logtime`, `acid`, `phone1`, `phone2`, `phone3`, `phone4`, `point1`, `point2`, `point3`, `point4`, `score1`, `score2`, `score3`, `score4`) VALUES ';
+        for (const key in result_old) {
+            if (Object.hasOwnProperty.call(result_new, key) === false) {
+                const v = result_old[key].split(",");
+                text_old += '\n(' + v.join(',') + '),';
+            }
+        }
+        for (const key in result_new) {
+            if (Object.hasOwnProperty.call(result_old, key) === false) {
+                const v = result_new[key].split(",");
+                text_new += '\n(' + v.join(',') + '),';
+            }
+        }
+        document.getElementById('result_old').value = text_old;
+        document.getElementById('result_new').value = text_new;
+    }
+</script>
 </body>
 </html>
