@@ -4,20 +4,27 @@
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>大凤林 立直麻将 地图 日麻地图</title>
 	<meta name="keywords" content="麻将地图,立直麻将,大凤林,立直麻将地图,日麻地图,日本麻将地图" />
 	<meta name="description" content="立直麻将地图网站" />
-	<meta name="baidu-site-verification" content="codeva-Xkm2bZdsn3" />
-	<link href="https://cdn.staticfile.net/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://cdn.staticfile.net/bootswatch/5.1.3/darkly/bootstrap.min.css"
-		media="(prefers-color-scheme: dark)" rel="stylesheet">
-	<link href="https://cdn.staticfile.net/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
-	<link href="https://cdn.staticfile.net/bootstrap-table/1.21.3/bootstrap-table.min.css" rel="stylesheet">
-	<link
-		href="https://cdn.staticfile.net/bootstrap-table/1.21.3/extensions/filter-control/bootstrap-table-filter-control.min.css"
-		rel="stylesheet">
+	<meta name="darkreader-lock">
+	<script>
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+			document.documentElement.setAttribute('data-bs-theme', 'dark');
+
+		window.matchMedia('(prefers-color-scheme: dark)')
+			.addEventListener('change', function () {
+				document.documentElement.setAttribute("data-bs-theme",
+					window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+			});
+	</script>
+	<link href="https://cdn.staticfile.net/twitter-bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.staticfile.net/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link href="https://cdn.staticfile.net/bootstrap-table/1.22.2/bootstrap-table.min.css" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://cdn.staticfile.net/bootstrap-table/1.22.2/extensions/filter-control/bootstrap-table-filter-control.min.css">
+
 	<style>
 		body,
 		input,
@@ -106,7 +113,8 @@
 	<div id="page_list" class="container mt-3">
 		<div id="my_alert" class="alert alert-warning alert-dismissible fade show" role="alert">
 			此网站仅为信息展示。<kbd class="d-inline-block">不保证真实性</kbd>、<kbd class="d-inline-block">不保证即时性</kbd>
-			说明在底部<br />友情链接：<a href="https://amae-koromo.sapk.ch/">雀魂牌谱屋</a> / <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=8r3EA7Afg6mQ4xKeAhWjaGRpzs5RxaN7&authKey=OTtzayYkqOzG%2FHB2jpii9xOOohWU4eRPDIktQJWeNIrGeI8XhzaxMoCdSqKOtQ%2BR&noverify=0&group_code=712110889">(国家认证的)立直麻将业余段位升段赛</a>
+			说明在底部<br />友情链接：<a href="https://amae-koromo.sapk.ch/">雀魂牌谱屋</a> / <a
+				href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=8r3EA7Afg6mQ4xKeAhWjaGRpzs5RxaN7&authKey=OTtzayYkqOzG%2FHB2jpii9xOOohWU4eRPDIktQJWeNIrGeI8XhzaxMoCdSqKOtQ%2BR&noverify=0&group_code=712110889">(国家认证的)立直麻将业余段位升段赛</a>
 
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
@@ -160,15 +168,15 @@
 		</div>
 	</div>
 
-	<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
-	<script src="https://cdn.staticfile.net/jquery/3.6.4/jquery.min.js"></script>
-	<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-	<script src="https://cdn.staticfile.net/bootstrap-table/1.21.3/bootstrap-table.min.js"></script>
-	<script src="https://cdn.staticfile.net/bootstrap-table/1.21.3/bootstrap-table-locale-all.min.js"></script>
-	<script src="https://cdn.staticfile.net/marked/11.1.0/marked.min.js"></script>
+	<script src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+	<script src="https://cdn.staticfile.net/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.net/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.staticfile.net/bootstrap-table/1.22.2/bootstrap-table.min.js"></script>
+	<script src="https://cdn.staticfile.net/bootstrap-table/1.22.2/bootstrap-table-locale-all.min.js"></script>
+	<script src="https://cdn.staticfile.net/marked/11.1.1/marked.min.js"></script>
 	<script
-		src="https://cdn.staticfile.net/bootstrap-table/1.21.3/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-	<script charset="utf-8" src="main.js"></script>
+		src="https://cdn.staticfile.net/bootstrap-table/1.22.2/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
