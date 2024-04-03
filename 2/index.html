@@ -63,10 +63,10 @@
 		<h2>冒险岛开锁活动/二分法</h2>
 		<div class="input-group mb-3">
 			<button class="btn btn-danger" type="button" onclick="data_back()">撤销</button>
-			<span class="input-group-text">最小值</span>
-			<input type="text" class="form-control" value="0" id="min">
-			<span class="input-group-text">最大值</span>
-			<input type="text" class="form-control" value="1000" id="max">
+			<span class="input-group-text">大于</span>
+			<input type="text" class="form-control" value="0" id="min" onchange="number_change()">
+			<span class="input-group-text">小于</span>
+			<input type="text" class="form-control" value="1000" id="max" onchange="number_change()">
 		</div>
 		<div class="input-group mb-3">
 			<span class="input-group-text">请输入数字</span>
@@ -90,7 +90,7 @@
 			if (leng === 0) {
 				window.mydata = [[0, 1000]]
 				this_data = [0, 1000];
-			}else{
+			} else {
 				this_data = window.mydata[leng - 1];
 			}
 			var number = Math.round(
@@ -98,6 +98,16 @@
 			);
 			document.getElementById("min").value = this_data[0];
 			document.getElementById("max").value = this_data[1];
+			document.getElementById("num").value = number;
+			document.getElementById("num2").innerText = number;
+			document.getElementById("num3").innerText = number;
+		}
+		function number_change() {
+			var min = document.getElementById("min");
+			var max = document.getElementById("max");
+			var number = Math.round(
+				(parseInt(min.value) + parseInt(max.value)) / 2
+			);
 			document.getElementById("num").value = number;
 			document.getElementById("num2").innerText = number;
 			document.getElementById("num3").innerText = number;
