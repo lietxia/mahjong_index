@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>大凤林 立直麻将 地图 日麻地图</title>
+	<meta name="keywords" content="麻将地图,立直麻将,大凤林,立直麻将地图,日麻地图,日本麻将地图" />
+	<meta name="description" content="立直麻将地图网站" />
+	<meta name="darkreader-lock">
+	<script>
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+			document.documentElement.setAttribute('data-bs-theme', 'dark');
+
+		window.matchMedia('(prefers-color-scheme: dark)')
+			.addEventListener('change', function () {
+				document.documentElement.setAttribute("data-bs-theme",
+					window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+			});
+	</script>
+	<link href="https://cdn.staticfile.net/twitter-bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		body,
+		input,
+		textarea,
+		option,
+		select {
+			font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "Meiryo", "Malgun Gothic", "tahoma", "Dotum", "MS PGothic", "PMingLiu", system, system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+		}
+
+		code,
+		pre,
+		kbd {
+			font-family: Consolas, "Microsoft JhengHei";
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		#page_map {
+			width: 100%;
+			height: 85%;
+		}
+
+		.mynav {
+			background-color: #712cf9;
+		}
+
+		@media (max-width: 767.98px) {
+			.photos {
+				width: 90%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container mt-3">
+		<h2>冒险岛活动二分法</h2>
+		<div class="input-group mb-3">
+			<button class="btn btn-danger" type="button" onclick="data_back()">撤销</button>
+			<span class="input-group-text">最小值</span>
+			<input type="text" class="form-control" value="0" id="min">
+			<span class="input-group-text">最大值</span>
+			<input type="text" class="form-control" value="1000" id="max">
+		</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text">请输入数字</span>
+			<input type="text" class="form-control" value="500" id="num">
+			<button class="btn btn-info" type="button" id="btn_lt" onclick="is_lt(true)"> &lt; <span
+					id="num2">500</span></button>
+			<button class="btn btn-success" type="button" id="btn_gt" onclick="is_lt(false)"> &gt; <span
+					id="num3">500</span></button>
+		</div>
+
+	</div>
+
+	<script src="https://cdn.staticfile.net/twitter-bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+	<script>
+		window.mydata = [[0, 1000]];
+		function data_back() {
+			console.log(window.mydata);
+			window.mydata.pop();
+			var leng = window.mydata.length;
+			var this_data;
+			if (leng === 0) {
+				window.mydata = [[0, 1000]]
+				this_data = [0, 1000];
+			}else{
+				this_data = window.mydata[leng - 1];
+			}
+			var number = Math.round(
+				(parseInt(this_data[0]) + parseInt(this_data[1])) / 2
+			);
+			document.getElementById("min").value = this_data[0];
+			document.getElementById("max").value = this_data[1];
+			document.getElementById("num").value = number;
+			document.getElementById("num2").innerText = number;
+			document.getElementById("num3").innerText = number;
+		}
+		function is_lt(lt = true) {
+			var min = document.getElementById("min");
+			var max = document.getElementById("max");
+			var num = document.getElementById("num");
+			var num2 = document.getElementById("num2");
+			var num3 = document.getElementById("num3");
+			var number = 500;
+			if (lt) {// <500
+				number = Math.round((parseInt(min.value) + parseInt(num.value)) / 2);
+				max.value = num.value;
+				window.mydata.push([min.value, num.value])
+			} else {// >500
+				number = Math.round((parseInt(num.value) + parseInt(max.value)) / 2);
+				min.value = num.value;
+				window.mydata.push([num.value, max.value])
+			}
+			num.value = number;
+			num2.innerText = number;
+			num3.innerText = number;
+		}
+	</script>
+</body>
+
+</html>
