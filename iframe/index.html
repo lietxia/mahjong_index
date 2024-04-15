@@ -31,11 +31,12 @@
 <body>
 	<script>
 		(function () {
-			if (window.location.search.substring(0, 1) === "?") {
-				var ele = document.createElement("iframe");
-				ele.setAttribute("src", decodeURIComponent(window.location.search.substring(1)));
-				document.body.appendChild(ele);
-			}
+			var ele = document.createElement("iframe");
+			ele.setAttribute("src",
+				"https://score.hieuzest.xyz/"
+				+ window.location.search
+				+ window.location.hash);
+			document.body.appendChild(ele);
 		})()
 	</script>
 </body>
