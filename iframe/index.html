@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ifr</title>
+	<style>
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			width: 100%;
+			border: none;
+			overflow: hidden;
+		}
+
+		iframe {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			width: 100%;
+			border: none;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		(function () {
+			if (window.location.search.substring(0, 1) === "?") {
+				var ele = document.createElement("iframe");
+				ele.setAttribute("src", decodeURIComponent(window.location.search.substring(1)));
+				document.body.appendChild(ele);
+			}
+		})()
+	</script>
+</body>
+
+</html>
