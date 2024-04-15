@@ -6,39 +6,21 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>ifr</title>
-	<style>
-		html,
-		body {
-			padding: 0;
-			margin: 0;
-			height: 100%;
-			width: 100%;
-			border: none;
-			overflow: hidden;
-		}
-
-		iframe {
-			padding: 0;
-			margin: 0;
-			height: 100%;
-			width: 100%;
-			border: none;
-			overflow: hidden;
-		}
-	</style>
 </head>
 
 <body>
-	<script>
-		(function () {
-			var ele = document.createElement("iframe");
-			ele.setAttribute("src",
-				"https://score.hieuzest.xyz/"
-				+ window.location.search
-				+ window.location.hash);
-			document.body.appendChild(ele);
-		})()
-	</script>
+
 </body>
+<script>
+	(function () {
+		fetch("https://score.hieuzest.xyz/"
+			+ window.location.search
+			+ window.location.hash)
+			.then(data => data.text())
+			.then(data => {
+				document.body.innerHTML = data;
+			});
+	})()
+</script>
 
 </html>
